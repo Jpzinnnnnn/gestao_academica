@@ -16,7 +16,7 @@ import { Api } from '../../service/api';
 
 export class Register {
 
-  tipo = 'aluno';
+  tipo = 'aluno'; // 'aluno' ou 'professor' — definido pela landing-page via query param ou state
 
   ra = '';
   email = '';
@@ -28,6 +28,14 @@ export class Register {
     private router: Router,
     private api: Api
   ) {}
+
+  voltar() {
+    this.router.navigate(['/']);
+  }
+
+  irParaLogin() {
+    this.router.navigate(['/login']);
+  }
 
   async registrar(event: Event) {
 
@@ -51,7 +59,7 @@ export class Register {
 
       alert(response.message || 'Usuário registrado');
 
-      this.router.navigate(['/landing-page']);
+      this.router.navigate(['/']);
 
     } catch (erro: any) {
 

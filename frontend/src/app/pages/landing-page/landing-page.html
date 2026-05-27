@@ -1,25 +1,65 @@
 <div class="container">
 
+  <!-- FUNDO -->
+  <div class="bg-circle circle-1"></div>
+  <div class="bg-circle circle-2"></div>
+
   <!-- LADO ESQUERDO -->
   <div class="left">
 
-    <h1>GEA</h1>
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
 
-    <h2>Gestão Escolar Acadêmica</h2>
+      <div>
+        <h1>GEA</h1>
+        <span>Gestão Escolar Acadêmica</span>
+      </div>
+    </div>
+
+    <h2>
+      Plataforma moderna para
+      gestão escolar inteligente
+    </h2>
 
     <p>
-      Bem-vindo ao sistema de gestão escolar.
-      Acesse sua conta para gerenciar suas
-      atividades acadêmicas.
+      Organize atividades acadêmicas, acompanhe
+      desempenho dos alunos e gerencie toda
+      a escola em um único sistema.
     </p>
+
+    <div class="badges">
+
+      <div class="badge">
+        <i class="fa-solid fa-book"></i>
+        <span>Acadêmico</span>
+      </div>
+
+      <div class="badge">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Desempenho</span>
+      </div>
+
+      <div class="badge">
+        <i class="fa-solid fa-user-group"></i>
+        <span>Gestão</span>
+      </div>
+
+    </div>
 
   </div>
 
   <!-- LADO DIREITO -->
   <div class="right">
 
+    <div class="welcome">
+      <h3>Selecionar acesso</h3>
+      <p>Escolha como deseja entrar no sistema</p>
+    </div>
+
     <!-- CARD ALUNO -->
-    <div class="card" (click)="acessarAluno()">
+    <div class="card aluno" (click)="acessarAluno()">
 
       <div class="icon blue">
         <i class="fa-solid fa-graduation-cap"></i>
@@ -27,21 +67,29 @@
 
       <div class="text">
         <h3>Sou Estudante</h3>
-        <span>Acessar como aluno</span>
+        <span>Acessar área do aluno</span>
+      </div>
+
+      <div class="arrow">
+        <i class="fa-solid fa-arrow-right"></i>
       </div>
 
     </div>
 
     <!-- CARD PROFESSOR -->
-    <div class="card" (click)="acessarProfessor()">
+    <div class="card professor" (click)="acessarProfessor()">
 
       <div class="icon purple">
-        <i class="fa-regular fa-user"></i>
+        <i class="fa-solid fa-chalkboard-user"></i>
       </div>
 
       <div class="text">
         <h3>Sou Professor</h3>
-        <span>Acessar como professor</span>
+        <span>Acessar área do professor</span>
+      </div>
+
+      <div class="arrow">
+        <i class="fa-solid fa-arrow-right"></i>
       </div>
 
     </div>

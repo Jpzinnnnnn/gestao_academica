@@ -1,22 +1,56 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-import { Login } from './login';
+@Component({
+  selector: 'app-login',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  templateUrl: './login.html',
+  styleUrl: './login.scss'
+})
+export class Login {
 
-describe('Login', () => {
-  let component: Login;
-  let fixture: ComponentFixture<Login>;
+  ra: string = '';
+  senha: string = '';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Login],
-    }).compileComponents();
+  tipo = 'aluno';
 
-    fixture = TestBed.createComponent(Login);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    this.route.queryParams.subscribe(params => {
+      this.tipo = params['tipo'] || 'aluno';
+    });
+
+  }
+
+  voltar() {
+    this.router.navigate(['/']);
+  }
+
+  login() {
+
+    console.log('RA:', this.ra);
+    console.log('Senha:', this.senha);
+
+    alert('Login realizado!');
+
+    this.router.navigate(['/home']);
+
+  }
+
+  irParaRegistro() {
+
+    this.router.navigate(['/register'], {
+      queryParams: {
+        tipo: this.tipo
+      }
+    });
+
+  }
+
+}

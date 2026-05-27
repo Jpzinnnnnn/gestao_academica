@@ -5,8 +5,15 @@ import { Login } from './pages/login/login';
 import { LandingPage } from './pages/landing-page/landing-page';
 
 export const routes: Routes = [
-    { path: "home", component: Home },
-    { path: "register", component: Register},
-    { path: "login", component: Login},
-    { path: "", component: LandingPage},
-];                                       
+
+  { path: '', component: LandingPage },
+
+  { path: 'login', component: Login },
+
+  { path: 'register', component: Register },
+
+  { path: 'home', component: Home },
+
+  { path: '**', redirectTo: '' }
+
+];

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -8,12 +9,22 @@ import { Component } from '@angular/core';
 })
 export class LandingPage {
 
-  acessarAluno(){
-    alert('Entrando como aluno');
+  constructor(private router: Router) {}
+
+  acessarAluno() {
+    this.router.navigate(['/login'], {
+      queryParams: {
+        tipo: 'aluno'
+      }
+    });
   }
 
-  acessarProfessor(){
-    alert('Entrando como professor');
+  acessarProfessor() {
+    this.router.navigate(['/login'], {
+      queryParams: {
+        tipo: 'professor'
+      }
+    });
   }
 
 }

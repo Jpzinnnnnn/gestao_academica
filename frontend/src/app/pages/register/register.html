@@ -1,22 +1,118 @@
-<form (submit)="registrar($event)">
+<div class="page">
 
-  <select name="tipo" [(ngModel)]="tipo">
-    <option value="aluno">Aluno</option>
-    <option value="professor">Professor</option>
-  </select>
+  <div class="back" (click)="voltar()">
+    <span class="arrow">←</span>
+    <span>Voltar</span>
+  </div>
 
-  <!-- ALUNO -->
-  <input *ngIf="tipo === 'aluno'" type="text" name="ra" placeholder="RA" [(ngModel)]="ra">
+  <div class="register-card">
 
-  <!-- PROFESSOR -->
-  <input *ngIf="tipo === 'professor'" type="email" name="email" placeholder="Email" [(ngModel)]="email">
+    <!-- ALUNO -->
+    <ng-container *ngIf="tipo === 'aluno'">
 
-  <input type="password" name="senha" placeholder="Senha" [(ngModel)]="senha">
+      <div class="header">
+        <div class="icon-box blue">
+          <i class="fa-solid fa-graduation-cap icon"></i>
+        </div>
+        <div>
+          <h1>Registro do Aluno</h1>
+          <p>Crie sua conta</p>
+        </div>
+      </div>
 
-  <input type="password" name="confirmar" placeholder="Confirmar senha" [(ngModel)]="confirmar">
+      <form (submit)="registrar($event)">
 
-  <button type="submit">
-    Registrar
-  </button>
+        <div class="input-group">
+          <label>Digite seu login (RA)</label>
+          <input
+            type="text"
+            placeholder="RA12345"
+            [(ngModel)]="ra"
+            name="ra"
+          />
+        </div>
 
-</form>
+        <div class="input-group">
+          <label>Digite sua senha</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="senha"
+            name="senha"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Confirme sua senha</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="confirmar"
+            name="confirmar"
+          />
+        </div>
+
+        <button type="submit">Registrar</button>
+
+      </form>
+
+    </ng-container>
+
+    <!-- PROFESSOR -->
+    <ng-container *ngIf="tipo === 'professor'">
+
+      <div class="header">
+        <div class="icon-box purple">
+          <i class="fa-regular fa-user icon"></i>
+        </div>
+        <div>
+          <h1>Registro do Professor</h1>
+          <p>Crie sua conta</p>
+        </div>
+      </div>
+
+      <form (submit)="registrar($event)">
+
+        <div class="input-group">
+          <label>Digite seu login (CPF)</label>
+          <input
+            type="text"
+            placeholder="000.000.000-00"
+            [(ngModel)]="email"
+            name="email"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Digite sua senha</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="senha"
+            name="senha"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Confirme sua senha</label>
+          <input
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="confirmar"
+            name="confirmar"
+          />
+        </div>
+
+        <button type="submit">Registrar</button>
+
+      </form>
+
+    </ng-container>
+
+    <div class="login-link">
+      Já tem uma conta? <a (click)="irParaLogin()">Faça login</a>
+    </div>
+
+  </div>
+
+</div>
