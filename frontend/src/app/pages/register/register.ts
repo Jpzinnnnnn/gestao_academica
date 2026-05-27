@@ -18,8 +18,15 @@ export class Register {
 
   tipo = 'aluno'; // 'aluno' ou 'professor' — definido pela landing-page via query param ou state
 
-  ra = '';
+  nome = '';
   email = '';
+  ra = '';
+
+  curso = '';
+  turma = '';
+
+  cpf = '';
+  especialidade = '';
 
   senha = '';
   confirmar = '';
@@ -42,22 +49,39 @@ export class Register {
     event.preventDefault();
 
     if (this.senha !== this.confirmar) {
+
       alert('As senhas não coincidem');
       return;
+
     }
 
     try {
 
       const response: any = await firstValueFrom(
+
         this.api.register({
-          tipo: this.tipo,
-          ra: this.ra,
+
+          tipo_usuario: this.tipo,
+
+          nome: this.nome,
           email: this.email,
+          ra: this.ra,
+
+          curso: this.curso,
+          turma: this.turma,
+
+          cpf: this.cpf,
+          especialidade: this.especialidade,
+
           password: this.senha
+
         })
       );
 
-      alert(response.message || 'Usuário registrado');
+      alert(
+        response.message ||
+        'Usuário registrado com sucesso'
+      );
 
       this.router.navigate(['/']);
 

@@ -7,7 +7,7 @@ const db = require('./db');
 const app = express();
 
 /* =========================
-   MIDDLEWARESS
+   MIDDLEWARES
 ========================= */
 
 app.use(cors());
@@ -19,117 +19,85 @@ app.use(express.json());
 
 app.post('/register', async (req, res) => {
 
-  const { tipo, ra, email, password } = req.body;
+  const {
+    nome,
+    ra,
+    email,
+    password,
+    tipo_usuario
+  } = req.body;
 
-  // validações básicas
-  if (!tipo || !password) {
-    return res.status(400).send('Preencha todos os campos');
+  // validações
+  if (!nome || !email || !password || !tipo_usuario) {
+    return res.status(400).send('Preencha todos os campos obrigatórios');
   }
 
   try {
 
-    /* =========================
-       ALUNO
-    ========================= */
+    // verifica email duplicado
+    const verificaEmail = `
+      SELECT * FROM usuarios
+      WHERE email = ?
+    `;
 
-    if (tipo === 'aluno') {
+    db.query(verificaEmail, [email], async (erro, results) => {
 
-      if (!ra) {
-        return res.status(400).send('RA obrigatório');
+      if (erro) {
+        console.log(erro);
+        return res.status(500).send(erro.sqlMessage);
       }
 
-      // verifica RA duplicado
-      const verifica = 'SELECT * FROM users WHERE ra = ?';
+      if (results.length > 0) {
+        return res.status(400).send('Email já cadastrado');
+      }
 
-      db.query(verifica, [ra], async (erro, results) => {
+      // criptografa senha
+      const hash = await bcrypt.hash(password, 10);
 
-        if (erro) {
-          console.log(erro);
-          return res.status(500).send('Erro no servidor');
-        }
+      // salva usuário
+      const sqlUsuario = `
+        INSERT INTO usuarios
+        (nome, ra, email, senha, tipo_usuario)
+        VALUES (?, ?, ?, ?, ?)
+      `;
 
-        if (results.length > 0) {
-          return res.status(400).send('RA já cadastrado');
-        }
-
-        // criptografa senha
-        const hash = await bcrypt.hash(password, 10);
-
-        // salva aluno
-        const sql = `
-          INSERT INTO users (tipo, ra, password)
-          VALUES (?, ?, ?)
-        `;
-
-        db.query(sql, [tipo, ra, hash], (err) => {
+      db.query(
+        sqlUsuario,
+        [
+          nome,
+          ra || null,
+          email,
+          hash,
+          tipo_usuario
+        ],
+        (err, result) => {
 
           if (err) {
             console.log(err);
-            return res.status(500).send('Erro ao cadastrar aluno');
+            return res.status(500).send(err.sqlMessage);
           }
 
-          res.send('Aluno registrado com sucesso!');
-        });
+          return res.status(201).send({
+            message: 'Usuário registrado com sucesso!',
+            user: {
+              id: result.insertId,
+              nome,
+              email,
+              ra,
+              tipo_usuario
+            }
+          });
 
-      });
-
-    }
-
-    /* =========================
-       PROFESSOR
-    ========================= */
-
-    else if (tipo === 'professor') {
-
-      if (!email) {
-        return res.status(400).send('Email obrigatório');
-      }
-
-      // verifica email duplicado
-      const verifica = 'SELECT * FROM users WHERE email = ?';
-
-      db.query(verifica, [email], async (erro, results) => {
-
-        if (erro) {
-          console.log(erro);
-          return res.status(500).send('Erro no servidor');
         }
+      );
 
-        if (results.length > 0) {
-          return res.status(400).send('Email já cadastrado');
-        }
-
-        // criptografa senha
-        const hash = await bcrypt.hash(password, 10);
-
-        // salva professor
-        const sql = `
-          INSERT INTO users (tipo, email, password)
-          VALUES (?, ?, ?)
-        `;
-
-        db.query(sql, [tipo, email, hash], (err) => {
-
-          if (err) {
-            console.log(err);
-            return res.status(500).send('Erro ao cadastrar professor');
-          }
-
-          res.send('Professor registrado com sucesso!');
-        });
-
-      });
-
-    }
-
-    else {
-      return res.status(400).send('Tipo inválido');
-    }
+    });
 
   } catch (err) {
 
     console.log(err);
-    res.status(500).send('Erro no servidor');
+
+    return res.status(500).send('Erro no servidor');
 
   }
 
@@ -141,42 +109,22 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', (req, res) => {
 
-  const { tipo, ra, email, password } = req.body;
+  const { email, password } = req.body;
 
-  let sql = '';
-  let valor = '';
-
-  /* =========================
-     LOGIN ALUNO
-  ========================= */
-
-  if (tipo === 'aluno') {
-
-    sql = 'SELECT * FROM users WHERE ra = ?';
-    valor = ra;
-
+  if (!email || !password) {
+    return res.status(400).send('Preencha email e senha');
   }
 
-  /* =========================
-     LOGIN PROFESSOR
-  ========================= */
+  const sql = `
+    SELECT * FROM usuarios
+    WHERE email = ?
+  `;
 
-  else if (tipo === 'professor') {
-
-    sql = 'SELECT * FROM users WHERE email = ?';
-    valor = email;
-
-  }
-
-  else {
-    return res.status(400).send('Tipo inválido');
-  }
-
-  db.query(sql, [valor], async (err, results) => {
+  db.query(sql, [email], async (err, results) => {
 
     if (err) {
       console.log(err);
-      return res.status(500).send('Erro no servidor');
+      return res.status(500).send(err.sqlMessage);
     }
 
     if (results.length === 0) {
@@ -186,22 +134,25 @@ app.post('/login', (req, res) => {
     const user = results[0];
 
     // compara senha
-    const senhaCorreta = await bcrypt.compare(password, user.password);
+    const senhaCorreta = await bcrypt.compare(
+      password,
+      user.senha
+    );
 
     if (!senhaCorreta) {
       return res.status(401).send('Senha inválida');
     }
 
-    // login OK
-    res.send({
+    return res.send({
 
       message: 'Login realizado com sucesso!',
 
       user: {
         id: user.id,
-        tipo: user.tipo,
+        nome: user.nome,
+        email: user.email,
         ra: user.ra,
-        email: user.email
+        tipo_usuario: user.tipo_usuario
       }
 
     });
