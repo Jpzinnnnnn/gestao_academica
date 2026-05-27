@@ -1,0 +1,58 @@
+<div class="page">
+
+    <div class="back">
+      <span class="arrow">←</span>
+      <span>Voltar</span>
+    </div>
+  
+    <div class="login-card">
+  
+      <div class="header">
+        <div class="icon-box">
+          <span class="icon">🎓</span>
+        </div>
+  
+        <div>
+          <h1>Login do Aluno</h1>
+          <p>Entre com suas credenciais</p>
+        </div>
+      </div>
+  
+      <form (ngSubmit)="login()">
+  
+        <div class="input-group">
+          <label>Digite seu login (RA)</label>
+  
+          <input
+            type="text"
+            placeholder="RA12345"
+            [(ngModel)]="ra"
+            name="ra"
+          />
+        </div>
+  
+        <div class="input-group">
+          <label>Digite sua senha</label>
+  
+          <input
+            type="password"
+            placeholder="••••••••"
+            [(ngModel)]="senha"
+            name="senha"
+          />
+        </div>
+  
+        <button type="submit">
+          Entrar
+        </button>
+  
+      </form>
+  
+      <div class="register">
+        Não tem uma conta?
+        <a href="#">Registre-se</a>
+      </div>
+  
+    </div>
+  
+  </div>

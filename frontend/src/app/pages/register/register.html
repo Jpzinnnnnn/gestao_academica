@@ -1,0 +1,22 @@
+<form (submit)="registrar($event)">
+
+  <select name="tipo" [(ngModel)]="tipo">
+    <option value="aluno">Aluno</option>
+    <option value="professor">Professor</option>
+  </select>
+
+  <!-- ALUNO -->
+  <input *ngIf="tipo === 'aluno'" type="text" name="ra" placeholder="RA" [(ngModel)]="ra">
+
+  <!-- PROFESSOR -->
+  <input *ngIf="tipo === 'professor'" type="email" name="email" placeholder="Email" [(ngModel)]="email">
+
+  <input type="password" name="senha" placeholder="Senha" [(ngModel)]="senha">
+
+  <input type="password" name="confirmar" placeholder="Confirmar senha" [(ngModel)]="confirmar">
+
+  <button type="submit">
+    Registrar
+  </button>
+
+</form>
