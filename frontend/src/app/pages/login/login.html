@@ -10,83 +10,64 @@
     <div class="header">
 
       <div
-      class="icon-box"
-      [class.blue]="tipo === 'aluno'"
-      [class.purple]="tipo === 'professor'"
-    >
-    <i
-    [class]="
-      tipo === 'aluno'
-      ? 'icon fa-solid fa-graduation-cap'
-      : 'icon fa-solid fa-chalkboard-user'
-    "
-  ></i>
-
+        class="icon-box"
+        [class.blue]="tipo === 'aluno'"
+        [class.purple]="tipo === 'professor'"
+      >
+        <i
+          [class]="
+            tipo === 'aluno'
+            ? 'icon fa-solid fa-graduation-cap'
+            : 'icon fa-solid fa-chalkboard-user'
+          "
+        ></i>
       </div>
 
       <div>
         <h1>
-          {{
-            tipo === 'aluno'
-            ? 'Login do Aluno'
-            : 'Login do Professor'
-          }}
+          {{ tipo === 'aluno' ? 'Login do Aluno' : 'Login do Professor' }}
         </h1>
-
         <p>Entre com suas credenciais</p>
       </div>
 
     </div>
 
-    <form (ngSubmit)="login()">
+    @if (erro) {
+      <div class="erro">{{ erro }}</div>
+    }
+
+    <!-- ✅ chama fazerLogin() -->
+    <form (ngSubmit)="fazerLogin()">
 
       <div class="input-group">
-
         <label>
-          {{
-            tipo === 'aluno'
-            ? 'Digite seu login (RA)'
-            : 'Digite seu login (CPF)'
-          }}
+          {{ tipo === 'aluno' ? 'RA' : 'Email' }}
         </label>
-
         <input
           type="text"
-          [placeholder]="
-            tipo === 'aluno'
-            ? 'RA12345'
-            : '000.000.000-00'
-          "
-          [(ngModel)]="ra"
-          name="ra"
+          [placeholder]="tipo === 'aluno' ? 'RA12345' : 'seu@email.com'"
+          [(ngModel)]="login"
+          name="login"
         />
-
       </div>
 
       <div class="input-group">
-
-        <label>Digite sua senha</label>
-
+        <label>Senha</label>
         <input
           type="password"
           placeholder="••••••••"
           [(ngModel)]="senha"
           name="senha"
         />
-
       </div>
 
-      <button type="submit">
-        Entrar
-      </button>
+      <button type="submit">Entrar</button>
 
     </form>
 
     <div class="register">
       Não tem uma conta?
-      <a (click)="irParaRegistro()">
-        Registre-se
-      </a>
+      <a (click)="irParaRegistro()">Registre-se</a>
     </div>
 
   </div>

@@ -1,20 +1,19 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise'); // ✅ /promise aqui
 
-// cria conexão
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '123456',
-  database: 'gestao_academica'
-});
-
-// conectaa
-db.connect((err) => {
-  if (err) {
-    console.log('Erro ao conectar:', err);
-  } else {
+async function conectar() {
+  try {
+    const db = await mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '123456',
+      database: 'gestao_academica'
+    });
     console.log('Banco conectado com sucesso');
+    return db;
+  } catch (err) {
+    console.error('Erro ao conectar no banco:', err);
+    process.exit(1);
   }
-});
+}
 
-module.exports = db;
+module.exports = conectar();

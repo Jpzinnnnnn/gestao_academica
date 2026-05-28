@@ -2,13 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 
-const db = require('./db');
-
 const app = express();
-
-/* =========================
-   MIDDLEWARES
-========================= */
 
 app.use(cors());
 app.use(express.json());
@@ -19,86 +13,62 @@ app.use(express.json());
 
 app.post('/register', async (req, res) => {
 
-  const {
-    nome,
-    ra,
-    email,
-    password,
-    tipo_usuario
-  } = req.body;
+  const db = await require('./db');
 
-  // validações
+  console.log('📥 Body recebido:', req.body);
+
+  const { nome, ra, email, password, tipo_usuario } = req.body;
+
   if (!nome || !email || !password || !tipo_usuario) {
     return res.status(400).send('Preencha todos os campos obrigatórios');
   }
 
   try {
 
-    // verifica email duplicado
-    const verificaEmail = `
-      SELECT * FROM usuarios
-      WHERE email = ?
-    `;
+    const [emailExiste] = await db.query(
+      'SELECT id FROM usuarios WHERE email = ?',
+      [email]
+    );
 
-    db.query(verificaEmail, [email], async (erro, results) => {
+    if (emailExiste.length > 0) {
+      return res.status(400).send('Email já cadastrado');
+    }
 
-      if (erro) {
-        console.log(erro);
-        return res.status(500).send(erro.sqlMessage);
-      }
-
-      if (results.length > 0) {
-        return res.status(400).send('Email já cadastrado');
-      }
-
-      // criptografa senha
-      const hash = await bcrypt.hash(password, 10);
-
-      // salva usuário
-      const sqlUsuario = `
-        INSERT INTO usuarios
-        (nome, ra, email, senha, tipo_usuario)
-        VALUES (?, ?, ?, ?, ?)
-      `;
-
-      db.query(
-        sqlUsuario,
-        [
-          nome,
-          ra || null,
-          email,
-          hash,
-          tipo_usuario
-        ],
-        (err, result) => {
-
-          if (err) {
-            console.log(err);
-            return res.status(500).send(err.sqlMessage);
-          }
-
-          return res.status(201).send({
-            message: 'Usuário registrado com sucesso!',
-            user: {
-              id: result.insertId,
-              nome,
-              email,
-              ra,
-              tipo_usuario
-            }
-          });
-
-        }
+    if (ra) {
+      const [raExiste] = await db.query(
+        'SELECT id FROM usuarios WHERE ra = ?',
+        [ra]
       );
 
+      if (raExiste.length > 0) {
+        return res.status(400).send('RA já cadastrado');
+      }
+    }
+
+    const hash = await bcrypt.hash(password, 10);
+
+    const [result] = await db.query(
+      `INSERT INTO usuarios (nome, ra, email, senha, tipo_usuario)
+       VALUES (?, ?, ?, ?, ?)`,
+      [nome, ra || null, email, hash, tipo_usuario]
+    );
+
+    console.log('✅ Usuário inserido com ID:', result.insertId);
+
+    return res.status(201).json({
+      message: 'Usuário registrado com sucesso!',
+      user: {
+        id: result.insertId,
+        nome,
+        email,
+        ra,
+        tipo_usuario
+      }
     });
 
   } catch (err) {
-
-    console.log(err);
-
-    return res.status(500).send('Erro no servidor');
-
+    console.error('❌ Erro no registro:', err);
+    return res.status(500).send(err.sqlMessage || 'Erro no servidor');
   }
 
 });
@@ -107,25 +77,32 @@ app.post('/register', async (req, res) => {
    LOGIN
 ========================= */
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
 
-  const { email, password } = req.body;
+  const db = await require('./db');
 
-  if (!email || !password) {
-    return res.status(400).send('Preencha email e senha');
+  console.log('📥 Login recebido:', req.body);
+
+  const { login, password, tipo_usuario } = req.body;
+
+  if (!login || !password || !tipo_usuario) {
+    return res.status(400).send('Preencha todos os campos');
   }
 
-  const sql = `
-    SELECT * FROM usuarios
-    WHERE email = ?
-  `;
+  try {
 
-  db.query(sql, [email], async (err, results) => {
+    let sql;
+    let params;
 
-    if (err) {
-      console.log(err);
-      return res.status(500).send(err.sqlMessage);
+    if (tipo_usuario === 'aluno') {
+      sql = 'SELECT * FROM usuarios WHERE ra = ?';
+      params = [login];
+    } else {
+      sql = 'SELECT * FROM usuarios WHERE email = ?';
+      params = [login];
     }
+
+    const [results] = await db.query(sql, params);
 
     if (results.length === 0) {
       return res.status(401).send('Usuário não encontrado');
@@ -133,20 +110,14 @@ app.post('/login', (req, res) => {
 
     const user = results[0];
 
-    // compara senha
-    const senhaCorreta = await bcrypt.compare(
-      password,
-      user.senha
-    );
+    const senhaCorreta = await bcrypt.compare(password, user.senha);
 
     if (!senhaCorreta) {
-      return res.status(401).send('Senha inválida');
+      return res.status(401).send('Senha incorreta');
     }
 
-    return res.send({
-
+    return res.json({
       message: 'Login realizado com sucesso!',
-
       user: {
         id: user.id,
         nome: user.nome,
@@ -154,15 +125,17 @@ app.post('/login', (req, res) => {
         ra: user.ra,
         tipo_usuario: user.tipo_usuario
       }
-
     });
 
-  });
+  } catch (err) {
+    console.error('❌ Erro no login:', err);
+    return res.status(500).send(err.sqlMessage || 'Erro no servidor');
+  }
 
 });
 
 /* =========================
-   TESTE API
+   TESTE
 ========================= */
 
 app.get('/', (req, res) => {

@@ -96,12 +96,23 @@
       <form (submit)="registrar($event)">
 
         <div class="input-group">
-          <label>Digite seu login (CPF)</label>
+          <label>Digite seu login (email)</label>
           <input
             type="text"
             placeholder="000.000.000-00"
             [(ngModel)]="email"
             name="email"
+          />
+        </div>
+
+
+        <div class="input-group">
+          <label>Digite seu nome</label>
+          <input
+            type="text"
+            placeholder="Nome:"
+            [(ngModel)]="nome"
+            name="nome"
           />
         </div>
 
