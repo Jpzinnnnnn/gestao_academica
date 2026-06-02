@@ -30,11 +30,9 @@ export class Register {
     private route: ActivatedRoute,
     private http: HttpClient
   ) {
-
     this.route.queryParams.subscribe(params => {
       this.tipo = params['tipo'] || 'aluno';
     });
-
   }
 
   voltar() {
@@ -43,19 +41,13 @@ export class Register {
 
   irParaLogin() {
     this.router.navigate(['/login'], {
-      queryParams: {
-        tipo_usuario: this.tipo
-      }
+      queryParams: { tipo_usuario: this.tipo }
     });
   }
 
   registrar(event: Event) {
-
     event.preventDefault();
-
     this.erro = '';
-
-    // VALIDAÇÕES
 
     if (!this.nome || !this.email || !this.senha) {
       this.erro = 'Preencha todos os campos!';
@@ -64,6 +56,11 @@ export class Register {
 
     if (this.tipo === 'aluno' && !this.ra) {
       this.erro = 'Digite o RA do aluno!';
+      return;
+    }
+
+    if (this.tipo === 'professor' && !this.cpf) {
+      this.erro = 'Digite o CPF do professor!';
       return;
     }
 
@@ -79,8 +76,6 @@ export class Register {
 
     this.carregando = true;
 
-    // BODY ENVIADO PARA O BACKEND
-
     const body: any = {
       nome: this.nome,
       email: this.email,
@@ -92,39 +87,24 @@ export class Register {
       body.ra = this.ra;
     }
 
-    // REQUISIÇÃO PARA API
+    if (this.tipo === 'professor') {
+      body.cpf = this.cpf;
+    }
 
     this.http.post('http://localhost:3000/register', body).subscribe({
-
       next: (res: any) => {
-
         this.carregando = false;
-
         alert('Registrado com sucesso!');
-
-        this.router.navigate(['/login'], {
-          queryParams: {
-            tipo_usuario: this.tipo
-          }
-        });
-
+        
+        // VAI PARA HOME CERTA
+        this.router.navigate([this.tipo === 'professor' ? '/professor' : '/aluno']);
       },
-
       error: (err) => {
-
         this.carregando = false;
-
         console.error(err);
-
-        this.erro =
-          typeof err.error === 'string'
-            ? err.error
-            : 'Erro ao registrar usuário';
-
+        this.erro = typeof err.error === 'string' ? err.error : 'Erro ao registrar usuário';
       }
-
     });
-
   }
 
 }

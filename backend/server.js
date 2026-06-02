@@ -10,21 +10,19 @@ app.use(express.json());
 /* =========================
    REGISTRO
 ========================= */
-
 app.post('/register', async (req, res) => {
-
   const db = await require('./db');
-
   console.log('📥 Body recebido:', req.body);
 
-  const { nome, ra, email, password, tipo_usuario } = req.body;
-
+  const { nome, ra, cpf, email, password, tipo_usuario } = req.body;
+  console.log('RA:', ra);
+  console.log('CPF:', cpf);
+  console.log('BODY:', JSON.stringify(req.body, null, 2));
   if (!nome || !email || !password || !tipo_usuario) {
     return res.status(400).send('Preencha todos os campos obrigatórios');
   }
 
   try {
-
     const [emailExiste] = await db.query(
       'SELECT id FROM usuarios WHERE email = ?',
       [email]
@@ -39,18 +37,27 @@ app.post('/register', async (req, res) => {
         'SELECT id FROM usuarios WHERE ra = ?',
         [ra]
       );
-
       if (raExiste.length > 0) {
         return res.status(400).send('RA já cadastrado');
+      }
+    }
+
+    if (cpf) {
+      const [cpfExiste] = await db.query(
+        'SELECT id FROM usuarios WHERE cpf = ?',
+        [cpf]
+      );
+      if (cpfExiste.length > 0) {
+        return res.status(400).send('CPF já cadastrado');
       }
     }
 
     const hash = await bcrypt.hash(password, 10);
 
     const [result] = await db.query(
-      `INSERT INTO usuarios (nome, ra, email, senha, tipo_usuario)
-       VALUES (?, ?, ?, ?, ?)`,
-      [nome, ra || null, email, hash, tipo_usuario]
+      `INSERT INTO usuarios (nome, ra, cpf, email, senha, tipo_usuario)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [nome, ra || null, cpf || null, email, hash, tipo_usuario]
     );
 
     console.log('✅ Usuário inserido com ID:', result.insertId);
@@ -62,6 +69,7 @@ app.post('/register', async (req, res) => {
         nome,
         email,
         ra,
+        cpf,
         tipo_usuario
       }
     });
@@ -70,7 +78,6 @@ app.post('/register', async (req, res) => {
     console.error('❌ Erro no registro:', err);
     return res.status(500).send(err.sqlMessage || 'Erro no servidor');
   }
-
 });
 
 /* =========================
@@ -148,4 +155,4 @@ app.get('/', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Servidor rodando em http://localhost:3000');
-});
+}); 

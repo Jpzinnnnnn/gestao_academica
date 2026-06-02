@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -23,18 +24,12 @@ export class Login {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http: HttpClient
   ) {
 
     this.route.queryParams.subscribe(params => {
-
-      this.tipo =
-        (params['tipo'] || 'aluno')
-          .toString()
-          .toLowerCase() === 'professor'
-          ? 'professor'
-          : 'aluno';
-
+      this.tipo = (params['tipo'] || 'aluno').toString().toLowerCase() === 'professor' ? 'professor' : 'aluno';
     });
 
   }
@@ -52,10 +47,10 @@ export class Login {
     this.erroRa = false;
     this.erroSenha = false;
 
-    const ra = this.ra.trim().toLowerCase();
+    const loginField = this.ra.trim();
     const senha = this.senha.trim();
 
-    if (!ra) {
+    if (!loginField) {
       this.erroRa = true;
     }
 
@@ -67,88 +62,44 @@ export class Login {
       return;
     }
 
-    // ADMIN
-
-    if (ra === 'admin' && senha === 'admin123') {
-
-      localStorage.setItem(
-        'sessao_usuario',
-        JSON.stringify({
-          ra: 'admin',
-          tipo: 'admin',
-          nome: 'Administrador'
-        })
-      );
-
-      this.router.navigate(['/professor']);
-      return;
-    }
-
-    // ALUNO
-
-    if (this.tipo === 'aluno') {
-
-      if (
-        ra === 'aluno1' &&
-        senha === 'aluno123'
-      ) {
-
+    // CHAMADA À API REAL
+    this.http.post('http://localhost:3000/login', {
+      login: loginField,
+      password: senha,
+      tipo_usuario: this.tipo
+    }).subscribe({
+      next: (res: any) => {
+        
         localStorage.setItem(
           'sessao_usuario',
           JSON.stringify({
-            ra: 'aluno1',
-            tipo: 'aluno',
-            nome: 'Aluno'
+            id: res.user.id,
+            nome: res.user.nome,
+            email: res.user.email,
+            ra: res.user.ra,
+            tipo: res.user.tipo_usuario
           })
         );
 
-        this.router.navigate(['/aluno']);
-        return;
+        if (res.user.tipo_usuario === 'professor' || res.user.tipo_usuario === 'admin') {
+          this.router.navigate(['/professor']);
+        } else {
+          this.router.navigate(['/aluno']);
+        }
+
+      },
+      error: (err) => {
+        console.error(err);
+        alert(err.error || 'Credenciais inválidas');
       }
-
-      alert('Credenciais de aluno inválidas.');
-      return;
-    }
-
-    // PROFESSOR
-
-    if (this.tipo === 'professor') {
-
-      if (
-        ra === 'professor1' &&
-        senha === 'prof123'
-      ) {
-
-        localStorage.setItem(
-          'sessao_usuario',
-          JSON.stringify({
-            ra: 'professor1',
-            tipo: 'professor',
-            nome: 'Professor'
-          })
-        );
-
-        this.router.navigate(['/professor']);
-        return;
-      }
-
-      alert('Credenciais de professor inválidas.');
-      return;
-    }
+    });
 
   }
 
   irParaRegistro() {
-
-    this.router.navigate(
-      ['/register'],
-      {
-        queryParams: {
-          tipo: this.tipo
-        }
-      }
-    );
-
+    this.router.navigate(['/register'], {
+      queryParams: { tipo: this.tipo }
+    });
   }
 
 }
