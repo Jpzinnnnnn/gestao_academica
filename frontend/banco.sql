@@ -12,3 +12,20 @@ CREATE TABLE usuarios (
     data_nascimento DATE,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE boletim (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    aluno_id INT NOT NULL,
+    disciplina VARCHAR(100) NOT NULL,
+    nota1 DECIMAL(4,2),
+    nota2 DECIMAL(4,2),
+    nota3 DECIMAL(4,2),
+    media DECIMAL(4,2),
+    frequencia INT,
+    situacao ENUM(
+        'Aprovado',
+        'Recuperacao',
+        'Reprovado'
+    ),
+    FOREIGN KEY (aluno_id) REFERENCES usuarios(id)
+);
