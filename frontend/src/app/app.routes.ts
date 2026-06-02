@@ -1,19 +1,55 @@
+
+
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { Register } from './pages/register/register';
-import { Login } from './pages/login/login';
+
 import { LandingPage } from './pages/landing-page/landing-page';
+
+import { Login } from './pages/login/login';
+import { Register } from './pages/register/register';
+
+import { HomeAluno } from './pages/home-aluno/home-aluno';
+import { HomeProfessor } from './pages/home-professor/home-professor';
+
+import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
 
-  { path: '', component: LandingPage },
+  // LANDING
+  {
+    path: '',
+    component: LandingPage
+  },
 
-  { path: 'login', component: Login },
+  // LOGIN
+  {
+    path: 'login',
+    component: Login
+  },
 
-  { path: 'register', component: Register },
+  // REGISTER
+  {
+    path: 'register',
+    component: Register
+  },
 
-  { path: 'home', component: Home },
+  // HOME ALUNO
+  {
+    path: 'aluno',
+    component: HomeAluno
+  },
 
-  { path: '**', redirectTo: '' }
+  // HOME PROFESSOR
+  {
+    path: 'professor',
+    component: HomeProfessor
+  },
+
+  // 404
+  {
+    path: '**',
+    component: NotFound
+  }
+
+
 
 ];

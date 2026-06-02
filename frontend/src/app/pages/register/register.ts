@@ -2,57 +2,89 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http'; // ✅ adicionado
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, CommonModule], // ✅ HttpClient não vai aqui, vai no app.config.ts
+  imports: [FormsModule, CommonModule],
   templateUrl: './register.html',
   styleUrls: ['./register.scss']
 })
 export class Register {
 
   tipo: string = 'aluno';
+
   ra: string = '';
+  cpf: string = '';
   email: string = '';
   nome: string = '';
   senha: string = '';
   confirmar: string = '';
 
+  erro: string = '';
+  carregando: boolean = false;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient // ✅ injetado
+    private http: HttpClient
   ) {
+
     this.route.queryParams.subscribe(params => {
       this.tipo = params['tipo'] || 'aluno';
     });
+
   }
 
   voltar() {
     this.router.navigate(['/']);
   }
 
+  irParaLogin() {
+    this.router.navigate(['/login'], {
+      queryParams: {
+        tipo_usuario: this.tipo
+      }
+    });
+  }
+
   registrar(event: Event) {
+
     event.preventDefault();
 
-    // ✅ Validação de senhas
-    if (this.senha !== this.confirmar) {
-      alert('As senhas não coincidem!');
-      return;
-    }
+    this.erro = '';
+
+    // VALIDAÇÕES
 
     if (!this.nome || !this.email || !this.senha) {
-      alert('Preencha todos os campos obrigatórios!');
+      this.erro = 'Preencha todos os campos!';
       return;
     }
 
-    // ✅ Monta o body que o backend espera
+    if (this.tipo === 'aluno' && !this.ra) {
+      this.erro = 'Digite o RA do aluno!';
+      return;
+    }
+
+    if (this.senha.length < 6) {
+      this.erro = 'A senha precisa ter no mínimo 6 caracteres!';
+      return;
+    }
+
+    if (this.senha !== this.confirmar) {
+      this.erro = 'As senhas não coincidem!';
+      return;
+    }
+
+    this.carregando = true;
+
+    // BODY ENVIADO PARA O BACKEND
+
     const body: any = {
       nome: this.nome,
       email: this.email,
-      password: this.senha,       // backend espera "password"
+      password: this.senha,
       tipo_usuario: this.tipo
     };
 
@@ -60,26 +92,39 @@ export class Register {
       body.ra = this.ra;
     }
 
-    // ✅ Chama o backend
-    this.http.post('http://localhost:3000/register', body).subscribe({
-      next: (res: any) => {
-        alert('Registrado com sucesso!');
-        this.router.navigate(['/login'], {
-          queryParams: { tipo_usuario: this.tipo }
-        });
-      },
-      error: (err) => {
-        const mensagem = typeof err.error === 'string' ? err.error : 'Erro desconhecido';
-        alert('Erro ao registrar: ' + mensagem);
-        console.error(err);
-      }
-    });
-  }
+    // REQUISIÇÃO PARA API
 
-  irParaLogin() {
-    this.router.navigate(['/login'], {
-      queryParams: { tipo_usuario: this.tipo }
+    this.http.post('http://localhost:3000/register', body).subscribe({
+
+      next: (res: any) => {
+
+        this.carregando = false;
+
+        alert('Registrado com sucesso!');
+
+        this.router.navigate(['/login'], {
+          queryParams: {
+            tipo_usuario: this.tipo
+          }
+        });
+
+      },
+
+      error: (err) => {
+
+        this.carregando = false;
+
+        console.error(err);
+
+        this.erro =
+          typeof err.error === 'string'
+            ? err.error
+            : 'Erro ao registrar usuário';
+
+      }
+
     });
+
   }
 
 }

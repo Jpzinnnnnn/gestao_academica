@@ -11,21 +11,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.scss'
 })
 export class Login {
-
   ra: string = '';
   senha: string = '';
-
   tipo = 'aluno';
 
   constructor(
     private router: Router,
     private route: ActivatedRoute
   ) {
-
     this.route.queryParams.subscribe(params => {
       this.tipo = params['tipo'] || 'aluno';
     });
-
   }
 
   voltar() {
@@ -33,24 +29,23 @@ export class Login {
   }
 
   login() {
-
     console.log('RA:', this.ra);
     console.log('Senha:', this.senha);
 
     alert('Login realizado!');
 
-    this.router.navigate(['/home']);
-
+    if (this.tipo === 'professor') {
+      this.router.navigate(['/professor']);
+    } else {
+      this.router.navigate(['/aluno']);
+    }
   }
 
   irParaRegistro() {
-
     this.router.navigate(['/register'], {
       queryParams: {
         tipo: this.tipo
       }
     });
-
   }
-
 }

@@ -1,11 +1,35 @@
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
 <div class="page">
 
   <div class="back" (click)="voltar()">
-    <span class="arrow">←</span>
+
+    <div class="back-icon">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+      </svg>
+    </div>
+
     <span>Voltar</span>
+
   </div>
 
-  <div class="login-card">
+  <div
+    class="login-card"
+    [class.card-professor]="tipo === 'professor'"
+  >
 
     <div class="header">
 
@@ -14,61 +38,218 @@
         [class.blue]="tipo === 'aluno'"
         [class.purple]="tipo === 'professor'"
       >
+
         <i
-          [class]="
-            tipo === 'aluno'
-            ? 'icon fa-solid fa-graduation-cap'
-            : 'icon fa-solid fa-chalkboard-user'
-          "
+          *ngIf="tipo === 'aluno'"
+          class="fa-solid fa-graduation-cap main-fa-icon"
         ></i>
+
+        <i
+          *ngIf="tipo === 'professor'"
+          class="fa-solid fa-chalkboard-user main-fa-icon"
+        ></i>
+
       </div>
 
-      <div>
+      <div class="header-text">
+
+        <div
+          class="role-badge"
+          [class.badge-blue]="tipo === 'aluno'"
+          [class.badge-purple]="tipo === 'professor'"
+        >
+          {{ tipo === 'aluno'
+            ? 'Área do Aluno'
+            : 'Área do Professor' }}
+        </div>
+
         <h1>
-          {{ tipo === 'aluno' ? 'Login do Aluno' : 'Login do Professor' }}
+          {{ tipo === 'aluno'
+            ? 'Login do Aluno'
+            : 'Login do Professor' }}
         </h1>
-        <p>Entre com suas credenciais</p>
+
+        <p>
+          {{ tipo === 'aluno'
+            ? 'Entre com seu RA e senha'
+            : 'Entre com seu CPF e senha' }}
+        </p>
+
       </div>
 
     </div>
 
-    @if (erro) {
-      <div class="erro">{{ erro }}</div>
-    }
+    <div class="divider"></div>
 
-    <!-- ✅ chama fazerLogin() -->
-    <form (ngSubmit)="fazerLogin()">
+    <form (ngSubmit)="login()">
 
       <div class="input-group">
+
         <label>
-          {{ tipo === 'aluno' ? 'RA' : 'Email' }}
+          {{ tipo === 'aluno' ? 'RA' : 'CPF' }}
         </label>
-        <input
-          type="text"
-          [placeholder]="tipo === 'aluno' ? 'RA12345' : 'seu@email.com'"
-          [(ngModel)]="login"
-          name="login"
-        />
+
+        <div class="input-box">
+
+          <span class="input-icon">
+
+            <svg
+              *ngIf="tipo === 'aluno'"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect
+                x="2"
+                y="5"
+                width="20"
+                height="14"
+                rx="2"
+              ></rect>
+
+              <line
+                x1="2"
+                y1="10"
+                x2="22"
+                y2="10"
+              ></line>
+            </svg>
+
+            <svg
+              *ngIf="tipo === 'professor'"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+              ></path>
+
+              <circle
+                cx="12"
+                cy="7"
+                r="4"
+              ></circle>
+            </svg>
+
+          </span>
+
+          <input
+            type="text"
+            [(ngModel)]="ra"
+            name="ra"
+            [placeholder]="
+              tipo === 'aluno'
+                ? 'Ex: 1098672483'
+                : 'Ex: 230.431.398-44'
+            "
+            [class.input-error]="erroRa"
+          />
+
+        </div>
+
+      <div class="field-error" *ngIf="erroRa">
+  <i class="fa-solid fa-circle-exclamation"></i>
+  <span>Preencha este campo.</span>
+</div>
+
       </div>
 
       <div class="input-group">
+
         <label>Senha</label>
-        <input
-          type="password"
-          placeholder="••••••••"
-          [(ngModel)]="senha"
-          name="senha"
-        />
+
+        <div class="password-box">
+
+          <span class="input-icon">
+
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <rect
+                x="3"
+                y="11"
+                width="18"
+                height="11"
+                rx="2"
+              ></rect>
+
+              <path
+                d="M7 11V7a5 5 0 0 1 10 0v4"
+              ></path>
+            </svg>
+
+          </span>
+
+          <input
+            [type]="mostrarSenha ? 'text' : 'password'"
+            [(ngModel)]="senha"
+            name="senha"
+            placeholder="Digite sua senha"
+            [class.input-error]="erroSenha"
+          />
+
+          <button
+            type="button"
+            class="show-password"
+            (click)="toggleSenha()"
+          >
+
+            <i
+              *ngIf="!mostrarSenha"
+              class="fa-solid fa-eye"
+            ></i>
+
+            <i
+              *ngIf="mostrarSenha"
+              class="fa-solid fa-eye-slash"
+            ></i>
+
+          </button>
+
+        </div>
+
+        <div class="field-error" *ngIf="erroSenha">
+  <i class="fa-solid fa-circle-exclamation"></i>
+  <span>Preencha este campo.</span>
+</div>
+
       </div>
 
-      <button type="submit">Entrar</button>
+      <button
+        type="submit"
+        class="login-btn"
+        [class.btn-purple]="tipo === 'professor'"
+      >
+        {{ tipo === 'aluno'
+          ? 'Entrar como Aluno'
+          : 'Entrar como Professor' }}
+      </button>
+
+      <div class="register-link">
+
+        <span>
+          Não possui uma conta?
+        </span>
+
+        <a (click)="irParaRegistro()">
+          Registre-se
+        </a>
+
+      </div>
 
     </form>
-
-    <div class="register">
-      Não tem uma conta?
-      <a (click)="irParaRegistro()">Registre-se</a>
-    </div>
 
   </div>
 

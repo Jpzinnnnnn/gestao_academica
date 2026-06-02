@@ -14,7 +14,7 @@ export class LandingPage {
   acessarAluno() {
     this.router.navigate(['/login'], {
       queryParams: {
-        tipo_usuario: 'aluno'
+        tipo: 'aluno'
       }
     });
   }
@@ -22,7 +22,7 @@ export class LandingPage {
   acessarProfessor() {
     this.router.navigate(['/login'], {
       queryParams: {
-        tipo_usuario: 'professor'
+        tipo: 'professor'
       }
     });
   }

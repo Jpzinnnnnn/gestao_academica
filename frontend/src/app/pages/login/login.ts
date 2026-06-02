@@ -1,70 +1,154 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
 export class Login {
 
-  login: string = '';
-  senha: string = '';
-  tipo: string = 'aluno';
-  erro: string = '';
+  ra = '';
+  senha = '';
+  tipo = 'aluno';
+
+  mostrarSenha = false;
+
+  erroRa = false;
+  erroSenha = false;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private http: HttpClient
+    private route: ActivatedRoute
   ) {
+
     this.route.queryParams.subscribe(params => {
-      this.tipo = params['tipo_usuario'] || 'aluno';
+
+      this.tipo =
+        (params['tipo'] || 'aluno')
+          .toString()
+          .toLowerCase() === 'professor'
+          ? 'professor'
+          : 'aluno';
+
     });
+
   }
 
   voltar() {
     this.router.navigate(['/']);
   }
 
-  fazerLogin() {
-    this.erro = '';
+  toggleSenha() {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
 
-    if (!this.login || !this.senha) {
-      this.erro = 'Preencha todos os campos!';
+  login() {
+
+    this.erroRa = false;
+    this.erroSenha = false;
+
+    const ra = this.ra.trim().toLowerCase();
+    const senha = this.senha.trim();
+
+    if (!ra) {
+      this.erroRa = true;
+    }
+
+    if (!senha) {
+      this.erroSenha = true;
+    }
+
+    if (this.erroRa || this.erroSenha) {
       return;
     }
 
-    const body = {
-      login: this.login,           // ✅ RA ou email dependendo do tipo
-      password: this.senha,
-      tipo_usuario: this.tipo      // ✅ envia o tipo para o backend saber como buscar
-    };
+    // ADMIN
 
-    console.log('📤 Enviando login:', body);
+    if (ra === 'admin' && senha === 'admin123') {
 
-    this.http.post('http://localhost:3000/login', body).subscribe({
-      next: (res: any) => {
-        console.log('✅ Login ok:', res);
-        localStorage.setItem('usuario', JSON.stringify(res.user));
-        this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        console.error('❌ Erro:', err);
-        const msg = typeof err.error === 'string' ? err.error : 'Login ou senha incorretos';
-        this.erro = msg;
+      localStorage.setItem(
+        'sessao_usuario',
+        JSON.stringify({
+          ra: 'admin',
+          tipo: 'admin',
+          nome: 'Administrador'
+        })
+      );
+
+      this.router.navigate(['/professor']);
+      return;
+    }
+
+    // ALUNO
+
+    if (this.tipo === 'aluno') {
+
+      if (
+        ra === 'aluno1' &&
+        senha === 'aluno123'
+      ) {
+
+        localStorage.setItem(
+          'sessao_usuario',
+          JSON.stringify({
+            ra: 'aluno1',
+            tipo: 'aluno',
+            nome: 'Aluno'
+          })
+        );
+
+        this.router.navigate(['/aluno']);
+        return;
       }
-    });
+
+      alert('Credenciais de aluno inválidas.');
+      return;
+    }
+
+    // PROFESSOR
+
+    if (this.tipo === 'professor') {
+
+      if (
+        ra === 'professor1' &&
+        senha === 'prof123'
+      ) {
+
+        localStorage.setItem(
+          'sessao_usuario',
+          JSON.stringify({
+            ra: 'professor1',
+            tipo: 'professor',
+            nome: 'Professor'
+          })
+        );
+
+        this.router.navigate(['/professor']);
+        return;
+      }
+
+      alert('Credenciais de professor inválidas.');
+      return;
+    }
+
   }
 
   irParaRegistro() {
-    this.router.navigate(['/register'], {
-      queryParams: { tipo: this.tipo }
-    });
+
+    this.router.navigate(
+      ['/register'],
+      {
+        queryParams: {
+          tipo: this.tipo
+        }
+      }
+    );
+
   }
 
 }
