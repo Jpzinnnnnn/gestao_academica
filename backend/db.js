@@ -1,19 +1,22 @@
-const mysql = require('mysql2/promise'); // ✅ /promise aqui
+const mysql = require('mysql2/promise');
 
-async function conectar() {
-  try {
-    const db = await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '123456',
-      database: 'gestao_academica'
-    });
-    console.log('Banco conectado com sucesso');
-    return db;
-  } catch (err) {
-    console.error('Erro ao conectar no banco:', err);
-    process.exit(1);
-  }
-}
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: '123456',
+  database: 'gestao_academica',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
+});
 
-module.exports = conectar();
+pool.getConnection()
+  .then(connection => {
+    console.log('✅ Banco conectado com sucesso');
+    connection.release();
+  })
+  .catch(err => {
+    console.error('❌ Erro ao conectar no banco:', err);
+  });
+
+module.exports = pool;

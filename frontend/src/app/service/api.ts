@@ -20,23 +20,7 @@ export class Api {
     return this.http.post(`${this.url}/login`, data);
   }
 
-  // 🦸 CREATE HERO
-  createHero(hero: any) {
-    return this.http.post(`${this.url}/heroes`, hero);
-  }
-
-  // 📋 LIST
-  getHeroes() {
-    return this.http.get(`${this.url}/heroes`);
-  }
-
-  // ✏️ UPDATE
-  updateHero(id: number, hero: any) {
-    return this.http.put(`${this.url}/heroes/${id}`, hero);
-  }
-
-  // ❌ DELETE
-  deleteHero(id: number) {
-    return this.http.delete(`${this.url}/heroes/${id}`);
+  getUser(id: number) {
+    return this.http.get(`${this.url}/user/${id}`);
   }
 }
