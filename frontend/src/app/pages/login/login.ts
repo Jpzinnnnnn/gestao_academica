@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { Api } from '../../service/api';
 
 @Component({
   selector: 'app-login',
@@ -25,11 +25,16 @@ export class Login {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private http: HttpClient
+    private api: Api
   ) {
 
     this.route.queryParams.subscribe(params => {
-      this.tipo = (params['tipo'] || 'aluno').toString().toLowerCase() === 'professor' ? 'professor' : 'aluno';
+      this.tipo =
+        (params['tipo'] || 'aluno')
+          .toString()
+          .toLowerCase() === 'professor'
+          ? 'professor'
+          : 'aluno';
     });
 
   }
@@ -62,26 +67,27 @@ export class Login {
       return;
     }
 
-    // CHAMADA À API REAL
-    this.http.post('http://localhost:3000/login', {
+    this.api.login({
       login: loginField,
       password: senha,
       tipo_usuario: this.tipo
     }).subscribe({
       next: (res: any) => {
-        
+
         localStorage.setItem(
           'sessao_usuario',
-          JSON.stringify({
-            id: res.user.id,
-            nome: res.user.nome,
-            email: res.user.email,
-            ra: res.user.ra,
-            tipo: res.user.tipo_usuario
-          })
+          JSON.stringify(res.user)
         );
 
-        if (res.user.tipo_usuario === 'professor' || res.user.tipo_usuario === 'admin') {
+        console.log(
+          'Sessão salva:',
+          localStorage.getItem('sessao_usuario')
+        );
+
+        if (
+          res.user.tipo_usuario === 'professor' ||
+          res.user.tipo_usuario === 'admin'
+        ) {
           this.router.navigate(['/professor']);
         } else {
           this.router.navigate(['/aluno']);
@@ -93,13 +99,13 @@ export class Login {
         alert(err.error || 'Credenciais inválidas');
       }
     });
-
   }
 
   irParaRegistro() {
     this.router.navigate(['/register'], {
-      queryParams: { tipo: this.tipo }
+      queryParams: {
+        tipo: this.tipo
+      }
     });
   }
-
 }

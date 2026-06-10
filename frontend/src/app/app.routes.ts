@@ -11,7 +11,6 @@ import { HomeAluno } from './pages/home-aluno/home-aluno';
 import { HomeProfessor } from './pages/home-professor/home-professor';
 
 import { NotFound } from './pages/not-found/not-found';
-import { TesteRetorno } from './pages/teste-retorno/teste-retorno';
 
 export const routes: Routes = [
 
@@ -43,10 +42,6 @@ export const routes: Routes = [
   {
     path: 'professor',
     component: HomeProfessor
-  },
-  {
-    path: 'teste-retorno',
-    component: TesteRetorno
   },
 
   // 404

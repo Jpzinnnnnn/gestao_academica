@@ -15,13 +15,29 @@ export class HomeAluno implements OnInit {
   user: any = {};
   constructor(private api: Api, private router: Router) { }
   ngOnInit(): void {
-    this.api.getUser(28).subscribe({
+
+    const usuario = this.api.getUsuarioLogado();
+
+    if (!usuario) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    this.nomeUsuario = usuario.nome;
+    this.tipoUsuario = usuario.tipo_usuario;
+
+    this.api.getUser(usuario.id).subscribe({
       next: (res: any) => {
         this.user = res;
-        console.log(res);
+
+        console.log('Usuário carregado:', res);
+      },
+      error: (err) => {
+        console.error(err);
       }
     });
-  
+
+    this.gerarCalendario();
 
     const sessao = localStorage.getItem('sessao_usuario');
     if (sessao) {
