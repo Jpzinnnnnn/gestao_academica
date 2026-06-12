@@ -133,10 +133,15 @@ export class HomeAluno implements OnInit {
   // ── BIBLIOTECA
   buscaBiblioteca = '';
   livros = [
-    { titulo: 'Matemática Avançada', autor: 'João Silva', categoria: 'Matemática', estrelas: 5, avaliacao: 4.5, status: 'Disponível' },
+    { titulo: 'Matemática Basica', autor: 'João Silva', categoria: 'Matemática', estrelas: 5, avaliacao: 4.5, status: 'Disponível', pdf: 'pdfs/matematica-basica.pdf'  },
     { titulo: 'Física Moderna', autor: 'Maria Santos', categoria: 'Física', estrelas: 5, avaliacao: 4.8, status: 'Disponível' },
     
   ];
+
+  abrirPdf(pdf: string) {
+    window.open(pdf, '_blank');
+  }
+
   get livrosFiltrados() {
     const q = this.buscaBiblioteca.toLowerCase();
     return q ? this.livros.filter(l =>
