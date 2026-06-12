@@ -14,20 +14,15 @@ CREATE TABLE usuarios (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
 CREATE TABLE boletim (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    aluno_id INT NOT NULL,
-    disciplina VARCHAR(100) NOT NULL,
+    usuario_id INT NOT NULL,
+    disciplina_id INT NOT NULL,
     nota1 DECIMAL(4,2),
     nota2 DECIMAL(4,2),
     nota3 DECIMAL(4,2),
-    media DECIMAL(4,2),
     frequencia INT,
-    situacao ENUM(
-        'Aprovado',
-        'Recuperacao',
-        'Reprovado'
-    ),
-    FOREIGN KEY (aluno_id) REFERENCES usuarios(id)
+    situacao ENUM('Aprovado', 'Recuperacao', 'Reprovado'),
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    FOREIGN KEY (disciplina_id) REFERENCES disciplinas(id)
 );

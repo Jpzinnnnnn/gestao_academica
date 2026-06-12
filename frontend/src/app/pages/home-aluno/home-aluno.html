@@ -4,7 +4,8 @@
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="8" r="4"></circle>
           <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
         </svg>
@@ -18,56 +19,90 @@
     <!-- NAV ALUNO -->
     <nav class="sidebar-nav">
       <a class="nav-item" [class.active]="paginaAtiva==='inicio'" (click)="navegarPara('inicio')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
         Início
       </a>
       <a class="nav-item" [class.active]="paginaAtiva==='matricula'" (click)="navegarPara('matricula')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
         Matrícula
       </a>
       <a class="nav-item" [class.active]="paginaAtiva==='boletim'" (click)="navegarPara('boletim')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
         Boletim
       </a>
-      <a class="nav-item" [class.active]="paginaAtiva==='calendario'" (click)="navegarPara('calendario')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-        Calendário Escolar
-      </a>
+
       <a class="nav-item" [class.active]="paginaAtiva==='tarefas'" (click)="navegarPara('tarefas')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
         Tarefas e Atividades
       </a>
       <a class="nav-item" [class.active]="paginaAtiva==='biblioteca'" (click)="navegarPara('biblioteca')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
         Biblioteca Virtual
       </a>
-      <a class="nav-item" [class.active]="paginaAtiva==='horario'" (click)="navegarPara('horario')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        Horário das Aulas
-      </a>
       <a class="nav-item" [class.active]="paginaAtiva==='comunicados'" (click)="navegarPara('comunicados')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
         Comunicados
       </a>
       <a class="nav-item" [class.active]="paginaAtiva==='downloads'" (click)="navegarPara('downloads')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
         Área de Downloads
       </a>
-      <a class="nav-item" [class.active]="paginaAtiva==='desempenho'" (click)="navegarPara('desempenho')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-        Desempenho Acadêmico
-      </a>
       <a class="nav-item" [class.active]="paginaAtiva==='suporte'" (click)="navegarPara('suporte')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
         Suporte ao Aluno
       </a>
       <a class="nav-item" [class.active]="paginaAtiva==='perfil'" (click)="navegarPara('perfil')">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
         Perfil
       </a>
     </nav>
 
-    
+
   </aside>
 
   <!-- ===== MAIN ===== -->
@@ -77,7 +112,11 @@
     <header class="topbar">
       <div class="topbar-logo">
         <div class="topbar-logo-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"></circle>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path>
+          </svg>
         </div>
         <div>
           <span class="topbar-gea">GEA</span>
@@ -86,11 +125,20 @@
       </div>
       <div class="topbar-actions">
         <button class="notif-btn">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+          </svg>
           <span class="notif-dot"></span>
         </button>
         <button class="sair-btn" (click)="sair()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
           Sair
         </button>
       </div>
@@ -107,7 +155,11 @@
 
         <div class="aviso-card">
           <div class="aviso-title">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
             Avisos Importantes
           </div>
           <ul class="aviso-list">
@@ -116,21 +168,101 @@
         </div>
 
         <div class="stats-row">
-          <div class="stat-card"><span class="stat-label">Média Geral</span><span class="stat-value blue">{{ mediaGeral }}</span></div>
-          <div class="stat-card"><span class="stat-label">Frequência</span><span class="stat-value green">{{ frequencia }}%</span></div>
-          <div class="stat-card"><span class="stat-label">Próxima Avaliação</span><span class="stat-value purple">{{ proximaAvaliacao }} dias</span></div>
+          <div class="stat-card"><span class="stat-label">Média Geral</span><span class="stat-value blue">{{ mediaGeral
+              }}</span></div>
+          <div class="stat-card"><span class="stat-label">Frequência</span><span class="stat-value green">{{ frequencia
+              }}%</span></div>
+          <div class="stat-card"><span class="stat-label">Próxima Avaliação</span><span class="stat-value purple">{{
+              proximaAvaliacao }} dias</span></div>
         </div>
 
-        <div class="section-title"><h2>Acesso Rápido</h2><p>Funcionalidades mais utilizadas</p></div>
+        <div class="section-title">
+          <h2>Acesso Rápido</h2>
+          <p>Funcionalidades mais utilizadas</p>
+        </div>
         <div class="quick-grid-home">
-          <div class="quick-card" (click)="navegarPara('boletim')"><div class="quick-icon" style="background:#16a34a"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg></div><div class="quick-name">Boletim</div><div class="quick-sub">Ver notas e frequência</div></div>
-          <div class="quick-card" (click)="navegarPara('tarefas')"><div class="quick-icon" style="background:#2563eb"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg></div><div class="quick-name">Tarefas</div><div class="quick-sub">Atividades pendentes</div></div>
-          <div class="quick-card" (click)="navegarPara('calendario')"><div class="quick-icon" style="background:#7c3aed"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div><div class="quick-name">Calendário</div><div class="quick-sub">Provas e eventos</div></div>
-          <div class="quick-card" (click)="navegarPara('biblioteca')"><div class="quick-icon" style="background:#ea580c"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div><div class="quick-name">Biblioteca</div><div class="quick-sub">Livros e materiais</div></div>
-          <div class="quick-card" (click)="navegarPara('downloads')"><div class="quick-icon" style="background:#dc2626"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div><div class="quick-name">Downloads</div><div class="quick-sub">Apostilas e arquivos</div></div>
-          <div class="quick-card" (click)="navegarPara('desempenho')"><div class="quick-icon" style="background:#4f46e5"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div><div class="quick-name">Desempenho</div><div class="quick-sub">Ver evolução</div></div>
-          <div class="quick-card" (click)="navegarPara('comunicados')"><div class="quick-icon" style="background:#db2777"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></div><div class="quick-name">Comunicados</div><div class="quick-sub">Avisos da escola</div></div>
-          <div class="quick-card" (click)="navegarPara('matricula')"><div class="quick-icon" style="background:#0d9488"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg></div><div class="quick-name">Matrícula</div><div class="quick-sub">Dados cadastrais</div></div>
+          <div class="quick-card" (click)="navegarPara('boletim')">
+            <div class="quick-icon" style="background:#16a34a"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg></div>
+            <div class="quick-name">Boletim</div>
+            <div class="quick-sub">Ver notas e frequência</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('tarefas')">
+            <div class="quick-icon" style="background:#2563eb"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg></div>
+            <div class="quick-name">Tarefas</div>
+            <div class="quick-sub">Atividades pendentes</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('calendario')">
+            <div class="quick-icon" style="background:#7c3aed"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg></div>
+            <div class="quick-name">Calendário</div>
+            <div class="quick-sub">Provas e eventos</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('biblioteca')">
+            <div class="quick-icon" style="background:#ea580c"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg></div>
+            <div class="quick-name">Biblioteca</div>
+            <div class="quick-sub">Livros e materiais</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('downloads')">
+            <div class="quick-icon" style="background:#dc2626"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg></div>
+            <div class="quick-name">Downloads</div>
+            <div class="quick-sub">Apostilas e arquivos</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('desempenho')">
+            <div class="quick-icon" style="background:#4f46e5"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg></div>
+            <div class="quick-name">Desempenho</div>
+            <div class="quick-sub">Ver evolução</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('comunicados')">
+            <div class="quick-icon" style="background:#db2777"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg></div>
+            <div class="quick-name">Comunicados</div>
+            <div class="quick-sub">Avisos da escola</div>
+          </div>
+          <div class="quick-card" (click)="navegarPara('matricula')">
+            <div class="quick-icon" style="background:#0d9488"><svg width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg></div>
+            <div class="quick-name">Matrícula</div>
+            <div class="quick-sub">Dados cadastrais</div>
+          </div>
         </div>
       </div>
 
@@ -138,7 +270,10 @@
       <div *ngIf="paginaAtiva==='matricula'" class="page-content">
         <div class="page-header-back">
           <button class="back-btn" (click)="navegarPara('inicio')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+            </svg>
             Voltar
           </button>
           <h1>Matrícula</h1>
@@ -148,66 +283,56 @@
           <div class="card-header-row">
             <h2 class="card-title">Dados Cadastrais</h2>
             <span class="badge-ativa">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
               Ativa
             </span>
           </div>
           <div class="info-grid">
-            <div class="info-item"><span class="info-label">Nome Completo</span><span class="info-value">{{user?.nome}}</span></div>
+            <div class="info-item"><span class="info-label">Nome Completo</span><span
+                class="info-value">{{user?.nome}}</span></div>
             <div class="info-item"><span class="info-label">RA</span><span class="info-value">{{user?.ra}}</span></div>
-            <div class="info-item"><span class="info-label">CPF</span><span class="info-value">{{user?.cpf}}</span></div>
+            <div class="info-item"><span class="info-label">CPF</span><span class="info-value">{{user?.cpf}}</span>
+            </div>
             <div class="info-item"><span class="info-label">RG</span><span class="info-value">{{user?.rg}}</span></div>
-            <div class="info-item"><span class="info-label">Data de Nascimento</span><span class="info-value">{{user?.data_nascimento}}</span></div>
-            <div class="info-item"><span class="info-label">Email</span><span class="info-value">{{user?.email}}</span></div>
-            <div class="info-item"><span class="info-label">Telefone</span><span class="info-value">{{user?.telefone}}</span></div>
-            <div class="info-item"><span class="info-label">Número de Matrícula</span><span class="info-value">{{user?.id}}</span></div>
-            <div class="info-item full"><span class="info-label">Endereço</span><span class="info-value">{{user?.endereco}}</span></div>
+            <div class="info-item"><span class="info-label">Data de Nascimento</span><span
+                class="info-value">{{user?.data_nascimento}}</span></div>
+            <div class="info-item"><span class="info-label">Email</span><span class="info-value">{{user?.email}}</span>
+            </div>
+            <div class="info-item"><span class="info-label">Telefone</span><span
+                class="info-value">{{user?.telefone}}</span></div>
+            <div class="info-item"><span class="info-label">Número de Matrícula</span><span
+                class="info-value">{{user?.id}}</span></div>
+            <div class="info-item full"><span class="info-label">Endereço</span><span
+                class="info-value">{{user?.endereco}}</span></div>
           </div>
         </div>
 
         <div class="card mb-20">
           <h2 class="card-title mb-16">Informações Acadêmicas</h2>
           <div class="info-grid">
-            <div class="info-item"><span class="info-label">Curso</span><span class="info-value">{{user?.curso}}</span></div>
-            <div class="info-item"><span class="info-label">Série/Turma</span><span class="info-value">{{user?.serie}}</span></div>
-            <div class="info-item"><span class="info-label">Data da Matrícula</span><span class="info-value">{{user?.criado_em}}</span></div>
+            <div class="info-item"><span class="info-label">Curso</span><span class="info-value">{{user?.curso}}</span>
+            </div>
+            <div class="info-item"><span class="info-label">Série/Turma</span><span
+                class="info-value">{{user?.serie}}</span></div>
+            <div class="info-item"><span class="info-label">Data da Matrícula</span><span
+                class="info-value">{{user?.criado_em}}</span></div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-header-row mb-16">
-            <h2 class="card-title">Documentos</h2>
-            <button class="btn-primary small">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-              Enviar Documento
-            </button>
-          </div>
-          <div class="doc-list">
-            <div class="doc-item" *ngFor="let doc of documentos">
-              <div class="doc-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                <div>
-                  <span class="doc-name">{{ doc.nome }}</span>
-                  <span class="doc-date">Enviado em: {{ doc.data }}</span>
-                </div>
-              </div>
-              <div class="doc-right">
-                <span class="badge-enviado" *ngIf="doc.status==='Enviado'">Enviado</span>
-                <span class="badge-pendente" *ngIf="doc.status==='Pendente'">Pendente</span>
-                <button class="icon-btn" *ngIf="doc.status==='Enviado'">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
 
       <!-- ========== BOLETIM ========== -->
       <div *ngIf="paginaAtiva==='boletim'" class="page-content boletim-bg">
         <div class="page-header-back">
           <button class="back-btn" (click)="navegarPara('inicio')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+            </svg>
             Voltar
           </button>
           <h1>Boletim</h1>
@@ -216,7 +341,11 @@
         <div class="stats-row mb-24">
           <div class="stat-card">
             <div class="stat-trend up">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                <polyline points="16 7 22 7 22 13"></polyline>
+              </svg>
             </div>
             <span class="stat-label">Média Geral</span>
             <span class="stat-value green">8.4</span>
@@ -224,7 +353,11 @@
           </div>
           <div class="stat-card">
             <div class="stat-trend up">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                <polyline points="16 7 22 7 22 13"></polyline>
+              </svg>
             </div>
             <span class="stat-label">Frequência Geral</span>
             <span class="stat-value green">92%</span>
@@ -241,7 +374,12 @@
           <div class="card-header-row mb-16">
             <h2 class="card-title">Notas por Disciplina</h2>
             <button class="btn-success small">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
               Baixar Boletim
             </button>
           </div>
@@ -249,7 +387,13 @@
             <table class="notas-table">
               <thead>
                 <tr>
-                  <th>Disciplina</th><th>Nota 1</th><th>Nota 2</th><th>Nota 3</th><th>Média Final</th><th>Frequência</th><th>Situação</th>
+                  <th>Disciplina</th>
+                  <th>Nota 1</th>
+                  <th>Nota 2</th>
+                  <th>Nota 3</th>
+                  <th>Média Final</th>
+                  <th>Frequência</th>
+                  <th>Situação</th>
                 </tr>
               </thead>
               <tbody>
@@ -266,71 +410,6 @@
             </table>
           </div>
         </div>
-
-        <div class="card">
-          <h2 class="card-title mb-16">Histórico Escolar</h2>
-          <div class="historico-list">
-            <div class="historico-item" *ngFor="let h of historicoEscolar">
-              <div>
-                <span class="historico-ano">{{ h.ano }}</span>
-                <span class="historico-info">Média: {{ h.media }} | Frequência: {{ h.freq }}%</span>
-              </div>
-              <span class="badge-aprovado">Aprovado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== CALENDÁRIO ========== -->
-      <div *ngIf="paginaAtiva==='calendario'" class="page-content">
-        <div class="page-header">
-          <h1>Calendário Escolar</h1>
-          <p>Visualize provas, trabalhos e eventos escolares</p>
-        </div>
-        <div class="calendario-layout">
-          <div class="card calendario-card">
-            <div class="cal-header">
-              <button class="cal-nav-btn" (click)="mesAnterior()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
-              </button>
-              <h3>{{ mesAtualNome }} {{ anoAtual }}</h3>
-              <button class="cal-nav-btn" (click)="proximoMes()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
-              </button>
-            </div>
-            <div class="cal-grid-header">
-              <span *ngFor="let d of diasSemana">{{ d }}</span>
-            </div>
-            <div class="cal-grid">
-              <div *ngFor="let dia of diasCalendario"
-                class="cal-dia"
-                [class.outro-mes]="!dia.mesAtual"
-                [class.hoje]="dia.hoje"
-                [class.tem-evento]="dia.temEvento"
-                (click)="dia.mesAtual && selecionarDia(dia)">
-                {{ dia.num }}
-                <span class="cal-dot" *ngIf="dia.temEvento && dia.mesAtual"></span>
-              </div>
-            </div>
-          </div>
-          <div class="card proximos-eventos">
-            <h3 class="card-title mb-16">Próximos Eventos</h3>
-            <div class="evento-item" *ngFor="let ev of proximosEventos">
-              <div class="evento-info">
-                <span class="evento-nome">{{ ev.nome }}</span>
-                <div class="evento-meta">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                  {{ ev.data }}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                  {{ ev.hora }}
-                </div>
-              </div>
-              <span class="badge-prova" *ngIf="ev.tipo==='Prova'">Prova</span>
-              <span class="badge-trabalho" *ngIf="ev.tipo==='Trabalho'">Trabalho</span>
-              <span class="badge-evento-tag" *ngIf="ev.tipo==='Evento'">Evento</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- ========== TAREFAS ========== -->
@@ -342,21 +421,34 @@
         <div class="stats-row mb-24">
           <div class="stat-card">
             <div class="stat-icon-row blue-txt">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
               Pendentes
             </div>
             <span class="stat-value blue">2</span>
           </div>
           <div class="stat-card">
             <div class="stat-icon-row green-txt">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
               Concluídas
             </div>
             <span class="stat-value green">1</span>
           </div>
           <div class="stat-card">
             <div class="stat-icon-row red-txt">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
               Atrasadas
             </div>
             <span class="stat-value red">1</span>
@@ -365,11 +457,14 @@
         <div class="card">
           <h2 class="card-title mb-16">Todas as Atividades</h2>
           <div class="tarefa-list">
-            <div *ngFor="let t of tarefas" class="tarefa-item"
-              [class.tarefa-concluida]="t.status==='concluida'"
+            <div *ngFor="let t of tarefas" class="tarefa-item" [class.tarefa-concluida]="t.status==='concluida'"
               [class.tarefa-atrasada]="t.status==='atrasada'">
               <div class="tarefa-check">
-                <svg *ngIf="t.status==='concluida'" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <svg *ngIf="t.status==='concluida'" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
                 <div *ngIf="t.status!=='concluida'" class="check-circle"></div>
               </div>
               <div class="tarefa-body">
@@ -377,7 +472,13 @@
                 <span class="tarefa-disciplina">{{ t.disciplina }}</span>
                 <span class="tarefa-desc">{{ t.descricao }}</span>
                 <div class="tarefa-prazo">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
                   Prazo: {{ t.prazo }}
                 </div>
               </div>
@@ -396,7 +497,11 @@
         </div>
         <div class="card mb-24">
           <div class="search-bar">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
             <input type="text" placeholder="Buscar livros, autores ou categorias..." [(ngModel)]="buscaBiblioteca" />
           </div>
         </div>
@@ -404,7 +509,11 @@
           <div *ngFor="let livro of livrosFiltrados" class="livro-card">
             <div class="livro-header">
               <div class="livro-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
               </div>
               <span class="badge-disponivel" *ngIf="livro.status==='Disponível'">Disponível</span>
               <span class="badge-emprestado" *ngIf="livro.status==='Emprestado'">Emprestado</span>
@@ -413,40 +522,25 @@
             <p class="livro-autor">Autor: {{ livro.autor }}</p>
             <p class="livro-cat">Categoria: {{ livro.categoria }}</p>
             <div class="livro-stars">
-              <svg *ngFor="let s of [1,2,3,4,5]" width="14" height="14" viewBox="0 0 24 24" [attr.fill]="s <= livro.estrelas ? '#f59e0b' : 'none'" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <svg *ngFor="let s of [1,2,3,4,5]" width="14" height="14" viewBox="0 0 24 24"
+                [attr.fill]="s <= livro.estrelas ? '#f59e0b' : 'none'" stroke="#f59e0b" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
               <span>{{ livro.avaliacao }}</span>
             </div>
             <button class="btn-primary full" *ngIf="livro.status==='Disponível'">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
               Acessar
             </button>
             <button class="btn-disabled full" *ngIf="livro.status==='Emprestado'">Indisponível</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== HORÁRIO DAS AULAS ========== -->
-      <div *ngIf="paginaAtiva==='horario'" class="page-content">
-        <div class="page-header">
-          <h1>Horário das Aulas</h1>
-          <p>Confira sua grade horária semanal</p>
-        </div>
-        <div class="horario-list">
-          <div *ngFor="let dia of horarioAulas" class="card mb-20">
-            <div class="dia-header">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <h3>{{ dia.dia }}</h3>
-            </div>
-            <div class="aula-list">
-              <div *ngFor="let aula of dia.aulas" class="aula-item" [style.background]="aula.cor + '22'" [style.border-left]="'3px solid ' + aula.cor">
-                <div class="aula-info">
-                  <span class="aula-disciplina" [style.color]="aula.cor">{{ aula.disciplina }}</span>
-                  <span class="aula-prof">{{ aula.professor }}</span>
-                  <span class="aula-sala">{{ aula.sala }}</span>
-                </div>
-                <span class="aula-hora">{{ aula.hora }}</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -461,14 +555,23 @@
           <div *ngFor="let c of comunicados" class="card comunicado-card mb-16">
             <div class="comunicado-header">
               <div class="comunicado-icon-wrap" [style.background]="c.cor + '22'">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" [attr.stroke]="c.cor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" [attr.stroke]="c.cor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg>
               </div>
               <div>
                 <span class="comunicado-titulo">{{ c.titulo }}</span>
                 <div class="comunicado-data">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
                   {{ c.data }}
                 </div>
               </div>
@@ -489,75 +592,25 @@
           <div class="download-list">
             <div *ngFor="let arq of arquivos" class="download-item">
               <div class="download-icon-wrap" [style.background]="arq.cor + '22'">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" [attr.stroke]="arq.cor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" [attr.stroke]="arq.cor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
               </div>
               <div class="download-info">
                 <span class="download-nome">{{ arq.nome }}</span>
                 <span class="download-meta">{{ arq.disciplina }} • {{ arq.tamanho }} • {{ arq.data }}</span>
               </div>
               <button class="btn-primary small">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
                 Baixar
               </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ========== DESEMPENHO ========== -->
-      <div *ngIf="paginaAtiva==='desempenho'" class="page-content">
-        <div class="page-header">
-          <h1>Desempenho Acadêmico</h1>
-          <p>Acompanhe sua evolução e resultados</p>
-        </div>
-        <div class="stats-row mb-24">
-          <div class="stat-card desemp-blue">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
-            <span class="stat-label white">Média Geral</span>
-            <span class="stat-value white-val">8.4</span>
-            <span class="stat-desc white">Desempenho excelente</span>
-          </div>
-          <div class="stat-card desemp-green">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            <span class="stat-label white">Frequência Geral</span>
-            <span class="stat-value white-val">92%</span>
-            <span class="stat-desc white">Acima da média</span>
-          </div>
-          <div class="stat-card desemp-purple">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-            <span class="stat-label white">Tendência</span>
-            <span class="stat-value white-val">↑ 5.2%</span>
-            <span class="stat-desc white">Em crescimento</span>
-          </div>
-        </div>
-        <div class="card">
-          <h2 class="card-title mb-20">Desempenho por Disciplina</h2>
-          <div class="desemp-list">
-            <div *ngFor="let d of disciplinas" class="desemp-disciplina">
-              <div class="desemp-header-row">
-                <span class="desemp-nome">{{ d.nome }}</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" [attr.stroke]="d.tendencia==='up' ? '#16a34a' : d.tendencia==='down' ? '#dc2626' : '#f59e0b'" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline *ngIf="d.tendencia==='up'" points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                  <polyline *ngIf="d.tendencia==='down'" points="22 17 13.5 8.5 8.5 13.5 2 7"></polyline>
-                  <line *ngIf="d.tendencia==='stable'" x1="2" y1="12" x2="22" y2="12"></line>
-                </svg>
-              </div>
-              <div class="bars-row">
-                <div class="bar-wrap">
-                  <span class="bar-label">Média</span>
-                  <div class="bar-track">
-                    <div class="bar-fill green" [style.width]="(d.media * 10) + '%'"></div>
-                  </div>
-                  <span class="bar-val">{{ d.media }}</span>
-                </div>
-                <div class="bar-wrap">
-                  <span class="bar-label">Frequência</span>
-                  <div class="bar-track">
-                    <div class="bar-fill blue" [style.width]="d.freq + '%'"></div>
-                  </div>
-                  <span class="bar-val">{{ d.freq }}%</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -572,21 +625,33 @@
         <div class="contato-grid mb-24">
           <div class="card contato-card">
             <div class="contato-icon email-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
             </div>
             <span class="contato-label">Email</span>
             <span class="contato-val">suporte@gea.edu.br</span>
           </div>
           <div class="card contato-card">
             <div class="contato-icon phone-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.46 3.43 2 2 0 0 1 3.44 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.37 6.37l1.1-1.1a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.46 3.43 2 2 0 0 1 3.44 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.37 6.37l1.1-1.1a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
             </div>
             <span class="contato-label">Telefone</span>
             <span class="contato-val">(11) 3456-7890</span>
           </div>
           <div class="card contato-card">
             <div class="contato-icon chat-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
             </div>
             <span class="contato-label">Chat Online</span>
             <span class="contato-val">Seg-Sex: 8h às 18h</span>
@@ -595,36 +660,27 @@
         <div class="suporte-grid">
           <div class="card">
             <h2 class="card-title mb-16">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
               Perguntas Frequentes
             </h2>
             <div class="faq-list">
               <div *ngFor="let faq of faqs" class="faq-item" (click)="toggleFaq(faq)">
                 <div class="faq-question">
                   {{ faq.pergunta }}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" [style.transform]="faq.aberto ? 'rotate(180deg)' : 'rotate(0)'"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    [style.transform]="faq.aberto ? 'rotate(180deg)' : 'rotate(0)'">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
                 </div>
                 <div class="faq-answer" *ngIf="faq.aberto">{{ faq.resposta }}</div>
               </div>
             </div>
-          </div>
-          <div class="card">
-            <h2 class="card-title mb-16">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              Envie sua Mensagem
-            </h2>
-            <div class="form-group">
-              <label>Assunto</label>
-              <input type="text" placeholder="Digite o assunto" [(ngModel)]="mensagemAssunto" />
-            </div>
-            <div class="form-group">
-              <label>Mensagem</label>
-              <textarea rows="5" placeholder="Descreva sua dúvida ou problema" [(ngModel)]="mensagemTexto"></textarea>
-            </div>
-            <button class="btn-primary full" (click)="enviarMensagem()">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              Enviar Mensagem
-            </button>
           </div>
         </div>
       </div>
@@ -633,7 +689,10 @@
       <div *ngIf="paginaAtiva==='perfil'" class="page-content">
         <div class="page-header-back">
           <button class="back-btn" (click)="navegarPara('inicio')">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7 7M5 12l7-7"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M5 12l7 7M5 12l7-7"></path>
+            </svg>
             Voltar
           </button>
           <h1>Perfil</h1>
@@ -646,19 +705,38 @@
             <p class="perfil-curso">{{user?.curso}}</p>
             <div class="perfil-contact">
               <div class="perfil-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
                 {{user?.email}}
               </div>
               <div class="perfil-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.46 3.43 2 2 0 0 1 3.44 1.22h3a2 2 0 0 1 2 1.72c.163.84.374 1.668.63 2.48a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.37 6.37l1.1-1.1a2 2 0 0 1 2.11-.45c.812.255 1.64.467 2.48.63A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.49 12 19.79 19.79 0 0 1 1.46 3.43 2 2 0 0 1 3.44 1.22h3a2 2 0 0 1 2 1.72c.163.84.374 1.668.63 2.48a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.37 6.37l1.1-1.1a2 2 0 0 1 2.11-.45c.812.255 1.64.467 2.48.63A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
                 {{user?.telefone}}
               </div>
               <div class="perfil-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
                 {{user?.endereco}}
               </div>
               <div class="perfil-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
                 {{user?.data_nascimento}}
               </div>
             </div>
@@ -668,41 +746,27 @@
               <div class="card-header-row mb-16">
                 <h2 class="card-title">Dados Pessoais</h2>
                 <button class="btn-orange small">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                  </svg>
                   Editar
                 </button>
               </div>
-              <div class="perfil-form-grid">  
-                <div class="form-group"><label>Nome Completo</label><input type="text" value="{{user?.nome}}" readonly /></div>
+              <div class="perfil-form-grid">
+                <div class="form-group"><label>Nome Completo</label><input type="text" value="{{user?.nome}}"
+                    readonly /></div>
                 <div class="form-group"><label>Email</label><input type="text" value="{{user?.email}}" readonly /></div>
-                <div class="form-group"><label>Telefone</label><input type="text" value="{{user?.telefone}}" readonly /></div>
-                <div class="form-group"><label>Data de Nascimento</label><input type="text" value="{{user?.data_nascimento}}" readonly /></div>
-                <div class="form-group full"><label>Endereço</label><input type="text" value="{{user?.endereco}}" readonly /></div>
-              </div>
-            </div>
-            <div class="card mb-20">
-              <div class="card-header-row">
-                <h2 class="card-title">Alterar Senha</h2>
-                <button class="btn-orange small">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                  Alterar
-                </button>
-              </div>
-            </div>
-            <div class="card">
-              <h2 class="card-title mb-16">Histórico Acadêmico</h2>
-              <div class="historico-list">
-                <div class="historico-item" *ngFor="let h of historicoAcademico">
-                  <div>
-                    <span class="historico-ano">{{ h.ano }}</span>
-                    <span class="historico-info">{{ h.curso }}</span>
-                    <span class="historico-info">Média: {{ h.media }}</span>
-                  </div>
-                  <span class="badge-em-curso" *ngIf="h.status==='Em curso'">Em curso</span>
-                  <span class="badge-aprovado" *ngIf="h.status==='Aprovado'">Aprovado</span>
+                <div class="form-group"><label>Telefone</label><input type="text" value="{{user?.telefone}}" readonly />
                 </div>
+                <div class="form-group"><label>Data de Nascimento</label><input type="text"
+                    value="{{user?.data_nascimento}}" readonly /></div>
+                <div class="form-group full"><label>Endereço</label><input type="text" value="{{user?.endereco}}"
+                    readonly /></div>
               </div>
             </div>
+
           </div>
         </div>
       </div>

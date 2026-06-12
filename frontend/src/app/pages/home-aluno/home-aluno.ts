@@ -69,17 +69,13 @@ export class HomeAluno implements OnInit {
     { nome: 'RG', data: '01/02/2024', status: 'Enviado' },
     { nome: 'CPF', data: '01/02/2024', status: 'Enviado' },
     { nome: 'Comprovante de Residência', data: '01/02/2024', status: 'Enviado' },
-    { nome: 'Histórico Escolar', data: '-', status: 'Pendente' },
   ];
 
   // ── BOLETIM / DESEMPENHO
   disciplinas = [
     { nome: 'Matemática', n1: 8.5, n2: 7.0, n3: 9.0, media: 8.2, freq: 95, tendencia: 'up' },
     { nome: 'Português', n1: 9.0, n2: 8.5, n3: 9.5, media: 9.0, freq: 92, tendencia: 'up' },
-    { nome: 'Física', n1: 7.5, n2: 8.0, n3: 7.0, media: 7.5, freq: 88, tendencia: 'down' },
-    { nome: 'Química', n1: 8.0, n2: 7.5, n3: 8.5, media: 8.0, freq: 90, tendencia: 'up' },
-    { nome: 'História', n1: 9.5, n2: 9.0, n3: 9.5, media: 9.3, freq: 94, tendencia: 'up' },
-    { nome: 'Geografia', n1: 8.5, n2: 8.0, n3: 8.5, media: 8.3, freq: 91, tendencia: 'stable' },
+    { nome: 'Física', n1: 7.5, n2: 8.0, n3: 7.0, media: 7.5, freq: 88, tendencia: 'down' }
   ];
 
   historicoEscolar = [
@@ -95,8 +91,7 @@ export class HomeAluno implements OnInit {
   proximosEventos = [
     { nome: 'Prova de Matemática', data: '25/05', hora: '08:00–10:00', tipo: 'Prova' },
     { nome: 'Trabalho de História', data: '22/05', hora: '23:59', tipo: 'Trabalho' },
-    { nome: 'Feira de Ciências', data: '01/06', hora: '09:00–17:00', tipo: 'Evento' },
-    { nome: 'Prova de Física', data: '27/05', hora: '10:00–12:00', tipo: 'Prova' },
+    { nome: 'Feira de Ciências', data: '01/06', hora: '09:00–17:00', tipo: 'Evento' }
   ];
   eventoDias = [1, 22, 25, 27];
 
@@ -132,8 +127,7 @@ export class HomeAluno implements OnInit {
   tarefas = [
     { nome: 'Trabalho de Matemática', disciplina: 'Matemática', descricao: 'Resolver exercícios do capítulo 5', prazo: '25/05/2026', prioridade: 'Alta', status: 'pendente' },
     { nome: 'Leitura de Português', disciplina: 'Português', descricao: 'Ler capítulo 10 do livro', prazo: '22/05/2026', prioridade: 'Média', status: 'concluida' },
-    { nome: 'Relatório de Física', disciplina: 'Física', descricao: 'Experimento sobre termodinâmica', prazo: '30/05/2026', prioridade: 'Média', status: 'pendente' },
-    { nome: 'Apresentação de História', disciplina: 'História', descricao: 'Revolução Industrial', prazo: '20/05/2026', prioridade: 'Alta', status: 'atrasada' },
+    
   ];
 
   // ── BIBLIOTECA
@@ -141,10 +135,7 @@ export class HomeAluno implements OnInit {
   livros = [
     { titulo: 'Matemática Avançada', autor: 'João Silva', categoria: 'Matemática', estrelas: 5, avaliacao: 4.5, status: 'Disponível' },
     { titulo: 'Física Moderna', autor: 'Maria Santos', categoria: 'Física', estrelas: 5, avaliacao: 4.8, status: 'Disponível' },
-    { titulo: 'História do Brasil', autor: 'Pedro Costa', categoria: 'História', estrelas: 4, avaliacao: 4.2, status: 'Emprestado' },
-    { titulo: 'Química Orgânica', autor: 'Ana Paula', categoria: 'Química', estrelas: 5, avaliacao: 4.6, status: 'Disponível' },
-    { titulo: 'Literatura Brasileira', autor: 'Carlos Mendes', categoria: 'Português', estrelas: 5, avaliacao: 4.9, status: 'Disponível' },
-    { titulo: 'Biologia Celular', autor: 'Fernanda Lima', categoria: 'Biologia', estrelas: 4, avaliacao: 4.7, status: 'Disponível' },
+    
   ];
   get livrosFiltrados() {
     const q = this.buscaBiblioteca.toLowerCase();
@@ -162,7 +153,6 @@ export class HomeAluno implements OnInit {
         { disciplina: 'Português', professor: 'Profa. Maria Santos', sala: 'Sala 102', hora: '08:00 – 09:00', cor: '#16a34a' },
         { disciplina: 'Física', professor: 'Prof. Pedro Costa', sala: 'Sala 103', hora: '09:15 – 10:00', cor: '#f59e0b' },
         { disciplina: 'Química', professor: 'Profa. Ana Paula', sala: 'Sala 104', hora: '10:20 – 11:00', cor: '#ec4899' },
-        { disciplina: 'História', professor: 'Prof. Carlos Mendes', sala: 'Sala 105', hora: '11:00 – 12:00', cor: '#f97316' },
       ]
     },
     {
@@ -170,8 +160,6 @@ export class HomeAluno implements OnInit {
         { disciplina: 'Biologia', professor: 'Profa. Fernanda Lima', sala: 'Sala 106', hora: '07:00 – 08:00', cor: '#16a34a' },
         { disciplina: 'Geografia', professor: 'Prof. Ricardo Alves', sala: 'Sala 107', hora: '08:00 – 09:10', cor: '#f59e0b' },
         { disciplina: 'Matemática', professor: 'Prof. João Silva', sala: 'Sala 101', hora: '09:10 – 10:00', cor: '#3b82f6' },
-        { disciplina: 'Inglês', professor: 'Profa. Laura Brown', sala: 'Sala 116', hora: '10:20 – 11:10', cor: '#8b5cf6' },
-        { disciplina: 'Educação Física', professor: 'Prof. Marcos Dias', sala: 'Quadra', hora: '11:00 – 12:00', cor: '#ef4444' },
       ]
     },
     {
@@ -179,8 +167,6 @@ export class HomeAluno implements OnInit {
         { disciplina: 'Português', professor: 'Profa. Maria Santos', sala: 'Sala 102', hora: '07:00 – 08:00', cor: '#16a34a' },
         { disciplina: 'Física', professor: 'Prof. Pedro Costa', sala: 'Sala 103', hora: '08:00 – 09:10', cor: '#f59e0b' },
         { disciplina: 'Química', professor: 'Profa. Ana Paula', sala: 'Sala 104', hora: '09:10 – 10:00', cor: '#ec4899' },
-        { disciplina: 'História', professor: 'Prof. Carlos Mendes', sala: 'Sala 107', hora: '10:20 – 11:10', cor: '#f97316' },
-        { disciplina: 'Arte', professor: 'Profa. Juliana Rocha', sala: 'Sala 120', hora: '11:00 – 12:00', cor: '#06b6d4' },
       ]
     },
   ];
@@ -190,8 +176,6 @@ export class HomeAluno implements OnInit {
     { titulo: 'Reunião de Pais – Junho 2026', data: '20/05/2026', texto: 'Comunicamos que a reunião de pais está agendada para o dia 10/06/2026 às 19h no auditório principal.', novo: true, cor: '#ef4444' },
     { titulo: 'Feriado Prolongado', data: '18/05/2026', texto: 'Não haverá aula nos dias 30 e 31/05 devido ao feriado prolongado.', novo: false, cor: '#3b82f6' },
     { titulo: 'Nova Biblioteca Digital', data: '15/05/2026', texto: 'Temos o prazer de anunciar a nova biblioteca digital com mais de 1000 títulos disponíveis.', novo: false, cor: '#16a34a' },
-    { titulo: 'Período de Matrículas 2026.2', data: '10/05/2026', texto: 'As matrículas para o segundo semestre estarão abertas de 01/06 a 15/06.', novo: true, cor: '#ef4444' },
-    { titulo: 'Feira de Ciências 2026', data: '05/05/2026', texto: 'A Feira de Ciências será realizada no dia 01/06. Todos os alunos estão convidados a participar.', novo: false, cor: '#8b5cf6' },
   ];
 
   // ── DOWNLOADS
@@ -199,9 +183,6 @@ export class HomeAluno implements OnInit {
     { nome: 'Apostila de Matemática – Capítulo 5', disciplina: 'Matemática', tamanho: '2.3 MB', data: '20/05/2026', cor: '#ef4444' },
     { nome: 'Vídeo Aula – Física Moderna', disciplina: 'Física', tamanho: '125 MB', data: '18/05/2026', cor: '#8b5cf6' },
     { nome: 'Lista de Exercícios – Química', disciplina: 'Química', tamanho: '1.8 MB', data: '15/05/2026', cor: '#ef4444' },
-    { nome: 'Slides – História do Brasil', disciplina: 'História', tamanho: '5.2 MB', data: '12/05/2026', cor: '#f97316' },
-    { nome: 'Mapa Mental – Biologia Celular', disciplina: 'Biologia', tamanho: '3.1 MB', data: '10/05/2026', cor: '#3b82f6' },
-    { nome: 'Resumo – Literatura Brasileira', disciplina: 'Português', tamanho: '1.5 MB', data: '08/05/2026', cor: '#ef4444' },
   ];
 
   // ── SUPORTE
@@ -211,7 +192,6 @@ export class HomeAluno implements OnInit {
     { pergunta: 'Como faço para alterar minha senha?', resposta: 'Acesse Perfil > Alterar Senha e siga os passos.', aberto: false },
     { pergunta: 'Onde encontro meu histórico escolar?', resposta: 'Acesse Boletim ou Perfil > Histórico Acadêmico.', aberto: false },
     { pergunta: 'Como baixo os materiais das aulas?', resposta: 'Acesse Área de Downloads e clique em Baixar.', aberto: false },
-    { pergunta: 'Posso acessar o sistema pelo celular?', resposta: 'Sim, o sistema é responsivo para mobile.', aberto: false },
   ];
   toggleFaq(faq: any) { faq.aberto = !faq.aberto; }
   enviarMensagem() {
@@ -221,15 +201,6 @@ export class HomeAluno implements OnInit {
       this.mensagemTexto = '';
     }
   }
-
-  // ── PERFIL
-  historicoAcademico = [
-    { ano: '3º Ano – 2024', curso: 'Engenharia de Software', media: 8.5, status: 'Em curso' },
-    { ano: '2º Ano – 2023', curso: 'Engenharia de Software', media: 8.7, status: 'Aprovado' },
-    { ano: '1º Ano – 2022', curso: 'Engenharia de Software', media: 8.3, status: 'Aprovado' },
-  ];
-
-
 
   navegarPara(pagina: string) { this.paginaAtiva = pagina; }
   sair() { localStorage.removeItem('sessao_usuario'); this.router.navigate(['/login']); }

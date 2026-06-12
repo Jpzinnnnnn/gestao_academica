@@ -83,9 +83,6 @@ export class HomeProfessor implements OnInit {
     { id: '3A', label: '3A' },
     { id: '3B', label: '3B' },
     { id: '2A', label: '2A' },
-    { id: '2B', label: '2B' },
-    { id: '1A', label: '1A' },
-    { id: '1B', label: '1B' },
   ];
 
   turmaSelecionadaNotas: string = '3A';
@@ -110,12 +107,7 @@ export class HomeProfessor implements OnInit {
   chamada: AlunoFrequencia[] = [
     { ra: 'RA001', nome: 'Ana Silva',      presente: true  },
     { ra: 'RA002', nome: 'Bruno Santos',   presente: true  },
-    { ra: 'RA003', nome: 'Carla Oliveira', presente: false },
-    { ra: 'RA004', nome: 'Daniel Costa',   presente: true  },
-    { ra: 'RA005', nome: 'Eduardo Lima',   presente: true  },
-    { ra: 'RA006', nome: 'Fernanda Rocha', presente: false },
-    { ra: 'RA007', nome: 'Gabriel Mendes', presente: true  },
-    { ra: 'RA008', nome: 'Helena Dias',    presente: true  },
+    { ra: 'RA003', nome: 'Carla Oliveira', presente: false }
   ];
 
   get presentes(): number {
@@ -131,7 +123,6 @@ export class HomeProfessor implements OnInit {
     { nome: 'Apostila de Matemática - Capítulo 5', turma: '3º Ano A', tipo: 'PDF',  tamanho: '2.3 MB',  data: '20/05/2026' },
     { nome: 'Lista de Exercícios - Equações',      turma: '3º Ano B', tipo: 'PDF',  tamanho: '1.8 MB',  data: '18/05/2026' },
     { nome: 'Slides - Funções',                    turma: '2º Ano A', tipo: 'PPTX', tamanho: '5.2 MB',  data: '15/05/2026' },
-    { nome: 'Vídeo Aula - Trigonometria',          turma: '2º Ano B', tipo: 'MP4',  tamanho: '125 MB',  data: '12/05/2026' },
   ];
 
   novoMaterialTitulo: string = '';
@@ -156,18 +147,14 @@ export class HomeProfessor implements OnInit {
   atividadesRecentes: AtividadeRecente[] = [
     { texto: 'Notas lançadas - 3º Ano A',       data: '20/05/2026 14:30', cor: 'g' },
     { texto: 'Material enviado - Apostila Cap. 5', data: '20/05/2026 11:15', cor: 'b' },
-    { texto: 'Frequência registrada - 2º Ano B', data: '19/05/2026 16:45', cor: 'p' },
-    { texto: 'Comunicado publicado',              data: '18/05/2026 09:00', cor: 'o' },
+    { texto: 'Frequência registrada - 2º Ano B', data: '19/05/2026 16:45', cor: 'p' }
   ];
 
   // ── Resumo relatórios ─────────────────────────
   resumoTurmas = [
     { turma: '3º Ano A', alunos: 28, media: 8.2, frequencia: '92%' },
     { turma: '3º Ano B', alunos: 26, media: 7.8, frequencia: '89%' },
-    { turma: '2º Ano A', alunos: 30, media: 8.5, frequencia: '94%' },
-    { turma: '2º Ano B', alunos: 25, media: 7.9, frequencia: '88%' },
-    { turma: '1º Ano A', alunos: 27, media: 8.0, frequencia: '91%' },
-    { turma: '1º Ano B', alunos: 20, media: 7.6, frequencia: '87%' },
+    { turma: '2º Ano A', alunos: 30, media: 8.5, frequencia: '94%' }
   ];
 
   // ── Dias do calendário ────────────────────────
