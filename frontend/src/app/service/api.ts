@@ -30,6 +30,11 @@ export class Api {
     localStorage.removeItem('sessao_usuario');
   }
 
+    // BUSCAR ÚLTIMO USUÁRIO CADASTRADO
+    getLastUser() {
+      return this.http.get(`${this.url}/user-last`);
+    }
+
   // USUÁRIO LOGADO
   getUsuarioLogado() {
     const sessao = localStorage.getItem('sessao_usuario');

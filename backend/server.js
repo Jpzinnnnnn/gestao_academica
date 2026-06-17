@@ -234,6 +234,38 @@ app.get('/user/:id', async (req, res) => {
 });
 
 
+app.get('/user-last', async (req, res) => {
+  const db = require('./db');
+
+  try {
+    const [results] = await db.query(
+      `
+      SELECT
+        id,
+        nome,
+        email,
+        ra,
+        cpf,
+        tipo_usuario
+      FROM usuarios
+      ORDER BY id DESC
+      LIMIT 1
+      `
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send('Nenhum usuário encontrado');
+    }
+
+    return res.json(results[0]);
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send('Erro no servidor');
+  }
+});
+
+
 // =============================================
 // COMUNICADOS
 // =============================================

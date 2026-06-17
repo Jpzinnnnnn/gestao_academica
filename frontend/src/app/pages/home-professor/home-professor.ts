@@ -10,6 +10,7 @@ import { AlunoFrequencia } from '../../models/aluno-frequencia.model';
 import { Material } from '../../models/material.model';
 import { Planejamento } from '../../models/planejamento.model';
 import { AtividadeRecente } from '../../models/atividade-recente.model';
+import { Api } from '../../service/api';
 
 @Component({
   selector: 'app-home-professor',
@@ -19,7 +20,7 @@ import { AtividadeRecente } from '../../models/atividade-recente.model';
   styleUrl: './home-professor.scss',
 })
 export class HomeProfessor implements OnInit {
-
+  lastUser: any = null;
   // ── Página ativa ──────────────────────────────
   activePage: string = 'home';
 
@@ -105,15 +106,39 @@ export class HomeProfessor implements OnInit {
     { ano: '3º Ano - 2024', curso: 'Engenharia de Software', media: 8.5, status: 'emcurso' }
   ];
 
-  constructor(private router: Router,  private comunicadoService: ComunicadoService) {}
-
+  constructor(private router: Router,  private comunicadoService: ComunicadoService, private api: Api) {}
+  user: any = {};
   ngOnInit(): void {
     this.buildCalendar();
     this.carregarComunicados();
+    this.buscarUltimoUsuario();
+    const usuario = this.api.getUsuarioLogado();
+
+    this.api.getUser(usuario.id).subscribe({
+      next: (res: any) => {
+        this.user = res;
+
+        console.log('Usuário carregado:', res);
+      },
+      error: (err) => {
+        console.error(err);
+      }
+    });
   }
 
-
-
+  buscarUltimoUsuario() {
+    this.api.getLastUser().subscribe({
+      next: (dados: any) => {
+        // Salva os dados retornados da API na variável
+        this.lastUser = dados;
+        console.log('Último usuário carregado:', this.lastUser);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar o último usuário:', erro);
+      }
+    });
+  }
+  
   carregarComunicados(): void {
     this.comunicadoService.getAll().subscribe({
       next: (dados) => {
