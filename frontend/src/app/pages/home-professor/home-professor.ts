@@ -2,69 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-export interface Turma {
-  id: string;
-  label: string;
-}
-
-export interface AlunoFrequencia {
-  ra: string;
-  nome: string;
-  presente: boolean;
-}
-
-export interface AlunoNota {
-  nome: string;
-  ra: string;
-  nota1: number;
-  nota2: number;
-  nota3: number;
-  media: number;
-  frequencia: string;
-}
-
-export interface Evento {
-  titulo: string;
-  descricao: string;
-  turma: string;
-  data: string;
-  hora: string;
-  tipo: 'prova' | 'trabalho' | 'reuniao';
-}
-
-export interface Material {
-  nome: string;
-  turma: string;
-  tipo: string;
-  tamanho: string;
-  data: string;
-}
-
-export interface Comunicado {
-  titulo: string;
-  data: string;
-  turma: string;
-  texto: string;
-  tag: 'importante' | 'informacao' | 'evento';
-}
-
-export interface Planejamento {
-  titulo: string;
-  data: string;
-  horario: string;
-  turma: string;
-  status: 'planejada' | 'realizada';
-  objetivos: string;
-  metodologia: string;
-  recursos: string;
-}
-
-export interface AtividadeRecente {
-  texto: string;
-  data: string;
-  cor: 'g' | 'b' | 'p' | 'o';
-}
+import { Comunicado, ComunicadoService } from '../../service/comunicado';
+import { Turma } from '../../models/turma.model';
+import { Evento } from '../../models/evento.model';
+import { AlunoNota } from '../../models/aluno-nota.model';
+import { AlunoFrequencia } from '../../models/aluno-frequencia.model';
+import { Material } from '../../models/material.model';
+import { Planejamento } from '../../models/planejamento.model';
+import { AtividadeRecente } from '../../models/atividade-recente.model';
 
 @Component({
   selector: 'app-home-professor',
@@ -91,23 +36,17 @@ export class HomeProfessor implements OnInit {
 
   // ── Eventos da agenda ─────────────────────────
   eventos: Evento[] = [
-    { titulo: 'Prova de Matemática', descricao: 'Avaliação sobre equações e funções', turma: '3º Ano A', data: '25/05', hora: '08:00 – 10:00', tipo: 'prova' },
-    { titulo: 'Trabalho de História', descricao: 'Entrega do trabalho sobre Revolução Industrial', turma: '2º Ano B', data: '22/05', hora: '21:59', tipo: 'trabalho' },
-    { titulo: 'Reunião Pedagógica', descricao: 'Reunião com coordenação pedagógica', turma: 'Todos', data: '30/05', hora: '14:00 – 16:00', tipo: 'reuniao' },
+    { titulo: 'Prova de Matemática', descricao: 'Avaliação sobre equações e funções', turma: '3º Ano A', data: '25/05', hora: '08:00 – 10:00', tipo: 'prova' }
   ];
 
   // ── Alunos notas ──────────────────────────────
   alunosNotas: AlunoNota[] = [
-    { nome: 'Ana Silva',     ra: 'RA001', nota1: 8.5, nota2: 7.0, nota3: 9.0, media: 8.2, frequencia: '95%' },
-    { nome: 'Bruno Santos',  ra: 'RA002', nota1: 7.0, nota2: 8.0, nota3: 7.5, media: 7.5, frequencia: '88%' },
-    { nome: 'Carla Oliveira',ra: 'RA003', nota1: 9.0, nota2: 9.5, nota3: 9.0, media: 9.2, frequencia: '96%' },
+    { nome: 'Ana Silva',     ra: 'RA001', nota1: 8.5, nota2: 7.0, nota3: 9.0, media: 8.2, frequencia: '95%' }
   ];
 
   // ── Chamada ───────────────────────────────────
   chamada: AlunoFrequencia[] = [
-    { ra: 'RA001', nome: 'Ana Silva',      presente: true  },
-    { ra: 'RA002', nome: 'Bruno Santos',   presente: true  },
-    { ra: 'RA003', nome: 'Carla Oliveira', presente: false }
+    { ra: 'RA001', nome: 'Ana Silva',      presente: true  }
   ];
 
   get presentes(): number {
@@ -120,9 +59,7 @@ export class HomeProfessor implements OnInit {
 
   // ── Materiais ─────────────────────────────────
   materiais: Material[] = [
-    { nome: 'Apostila de Matemática - Capítulo 5', turma: '3º Ano A', tipo: 'PDF',  tamanho: '2.3 MB',  data: '20/05/2026' },
-    { nome: 'Lista de Exercícios - Equações',      turma: '3º Ano B', tipo: 'PDF',  tamanho: '1.8 MB',  data: '18/05/2026' },
-    { nome: 'Slides - Funções',                    turma: '2º Ano A', tipo: 'PPTX', tamanho: '5.2 MB',  data: '15/05/2026' },
+    { nome: 'Apostila de Matemática - Capítulo 5', turma: '3º Ano A', tipo: 'PDF',  tamanho: '2.3 MB',  data: '20/05/2026' }
   ];
 
   novoMaterialTitulo: string = '';
@@ -130,31 +67,22 @@ export class HomeProfessor implements OnInit {
   novoMaterialCategoria: string = '';
 
   // ── Comunicados ───────────────────────────────
-  comunicados: Comunicado[] = [
-    { titulo: 'Prova de Matemática - Capítulo 5', data: '20/05/2026', turma: '3º Ano A e B', texto: 'A prova do capítulo 5 será realizada na próxima semana.', tag: 'importante' },
-    { titulo: 'Material Disponível',              data: '18/05/2026', turma: 'Todas as Turmas', texto: 'Novo material de estudos disponível na área de downloads.', tag: 'informacao' },
-    { titulo: 'Aula Extra - Trigonometria',       data: '15/05/2026', turma: '2º Ano A',  texto: 'Aula extra de trigonometria agendada para sábado, 25/05.', tag: 'evento' },
-  ];
+  comunicados: Comunicado[] = [];
+
 
   // ── Planejamentos ─────────────────────────────
   planejamentos: Planejamento[] = [
-    { titulo: 'Introdução às Funções', data: '25/05/2026', horario: '07:30 – 09:10', turma: '3º Ano A', status: 'planejada', objetivos: 'Apresentar o conceito de funções e suas aplicações práticas', metodologia: 'Aula expositiva com exemplos práticos e exercícios', recursos: 'Slides, quadro branco, calculadora' },
-    { titulo: 'Equações do 2º Grau',   data: '22/05/2026', horario: '10:20 – 12:00', turma: '2º Ano A', status: 'realizada', objetivos: 'Resolver equações do segundo grau usando fórmula de Bhaskara', metodologia: 'Resolução de exercícios em grupo', recursos: 'Lista de exercícios, apostila' },
-    { titulo: 'Trigonometria Básica',  data: '28/05/2026', horario: '13:30 – 15:10', turma: '1º Ano B', status: 'planejada', objetivos: 'Compreender as razões trigonométricas básicas', metodologia: 'Aula prática com medições', recursos: 'Transferidor, régua, apostila' },
+    { titulo: 'Introdução às Funções', data: '25/05/2026', horario: '07:30 – 09:10', turma: '3º Ano A', status: 'planejada', objetivos: 'Apresentar o conceito de funções e suas aplicações práticas', metodologia: 'Aula expositiva com exemplos práticos e exercícios', recursos: 'Slides, quadro branco, calculadora' }
   ];
 
   // ── Painel / Atividades recentes ──────────────
   atividadesRecentes: AtividadeRecente[] = [
-    { texto: 'Notas lançadas - 3º Ano A',       data: '20/05/2026 14:30', cor: 'g' },
-    { texto: 'Material enviado - Apostila Cap. 5', data: '20/05/2026 11:15', cor: 'b' },
-    { texto: 'Frequência registrada - 2º Ano B', data: '19/05/2026 16:45', cor: 'p' }
+    { texto: 'Notas lançadas - 3º Ano A',       data: '20/05/2026 14:30', cor: 'g' }
   ];
 
   // ── Resumo relatórios ─────────────────────────
   resumoTurmas = [
-    { turma: '3º Ano A', alunos: 28, media: 8.2, frequencia: '92%' },
-    { turma: '3º Ano B', alunos: 26, media: 7.8, frequencia: '89%' },
-    { turma: '2º Ano A', alunos: 30, media: 8.5, frequencia: '94%' }
+    { turma: '3º Ano A', alunos: 28, media: 8.2, frequencia: '92%' }
   ];
 
   // ── Dias do calendário ────────────────────────
@@ -174,17 +102,39 @@ export class HomeProfessor implements OnInit {
   };
 
   historicoAcademico = [
-    { ano: '3º Ano - 2024', curso: 'Engenharia de Software', media: 8.5, status: 'emcurso' },
-    { ano: '2º Ano - 2023', curso: 'Engenharia de Software', media: 8.7, status: 'aprovado' },
-    { ano: '1º Ano - 2022', curso: 'Engenharia de Software', media: 8.3, status: 'aprovado' },
+    { ano: '3º Ano - 2024', curso: 'Engenharia de Software', media: 8.5, status: 'emcurso' }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,  private comunicadoService: ComunicadoService) {}
 
   ngOnInit(): void {
     this.buildCalendar();
+    this.carregarComunicados();
   }
 
+
+
+  carregarComunicados(): void {
+    this.comunicadoService.getAll().subscribe({
+      next: (dados) => {
+        this.comunicados = dados;
+      },
+      error: (erro) => {
+        console.error('Erro ao carregar comunicados', erro);
+      }
+    });
+  }
+
+  removerComunicado(id: number): void {
+    this.comunicadoService.delete(id).subscribe({
+      next: () => {
+        this.carregarComunicados();
+      },
+      error: (erro) => {
+        console.error('Erro ao remover comunicado', erro);
+      }
+    });
+  }
   // ── Navegação ─────────────────────────────────
   goTo(page: string): void {
     this.activePage = page;
@@ -237,9 +187,6 @@ export class HomeProfessor implements OnInit {
     this.materiais.splice(index, 1);
   }
 
-  removerComunicado(index: number): void {
-    this.comunicados.splice(index, 1);
-  }
 
   removerPlanejamento(index: number): void {
     this.planejamentos.splice(index, 1);

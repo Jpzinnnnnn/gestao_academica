@@ -233,6 +233,149 @@ app.get('/user/:id', async (req, res) => {
   }
 });
 
+
+// =============================================
+// COMUNICADOS
+// =============================================
+
+app.get('/comunicados', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT c.*, u.nome AS professor_nome
+      FROM comunicados c
+      LEFT JOIN usuarios u ON c.professor_id = u.id
+      ORDER BY c.data_publicacao DESC
+    `);
+
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao listar comunicados' });
+  }
+});
+
+app.get('/comunicados/:id', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT c.*, u.nome AS professor_nome
+      FROM comunicados c
+      LEFT JOIN usuarios u ON c.professor_id = u.id
+      WHERE c.id = ?
+    `, [req.params.id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Comunicado não encontrado' });
+    }
+
+    res.json(rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar comunicado' });
+  }
+});
+
+app.post('/comunicados', async (req, res) => {
+  try {
+    const {
+      professor_id,
+      titulo,
+      mensagem,
+      data_publicacao,
+      turma,
+      tipo
+    } = req.body;
+
+    if (
+      !professor_id ||
+      !titulo ||
+      !mensagem ||
+      !data_publicacao ||
+      !turma ||
+      !tipo
+    ) {
+      return res.status(400).json({
+        error: 'Preencha todos os campos obrigatórios'
+      });
+    }
+
+    await pool.query(
+      `INSERT INTO comunicados
+      (professor_id, titulo, mensagem, data_publicacao, turma, tipo)
+      VALUES (?, ?, ?, ?, ?, ?)`,
+      [
+        professor_id,
+        titulo,
+        mensagem,
+        data_publicacao,
+        turma,
+        tipo
+      ]
+    );
+
+    res.status(201).json({
+      message: 'Comunicado criado com sucesso'
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao criar comunicado' });
+  }
+});
+
+app.put('/comunicados/:id', async (req, res) => {
+  try {
+    const {
+      professor_id,
+      titulo,
+      mensagem,
+      data_publicacao,
+      turma,
+      tipo
+    } = req.body;
+
+    await pool.query(
+      `UPDATE comunicados
+       SET professor_id = ?,
+           titulo = ?,
+           mensagem = ?,
+           data_publicacao = ?,
+           turma = ?,
+           tipo = ?
+       WHERE id = ?`,
+      [
+        professor_id,
+        titulo,
+        mensagem,
+        data_publicacao,
+        turma,
+        tipo,
+        req.params.id
+      ]
+    );
+
+    res.json({
+      message: 'Comunicado atualizado com sucesso'
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao atualizar comunicado' });
+  }
+});
+
+app.delete('/comunicados/:id', async (req, res) => {
+  try {
+    await pool.query(
+      'DELETE FROM comunicados WHERE id = ?',
+      [req.params.id]
+    );
+
+    res.json({
+      message: 'Comunicado removido com sucesso'
+    });
+
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao remover comunicado' });
+  }
+});
+
+
 /* =========================
    START SERVER
 ========================= */

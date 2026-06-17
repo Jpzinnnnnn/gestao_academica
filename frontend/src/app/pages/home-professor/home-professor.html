@@ -504,19 +504,50 @@
           <h1>Comunicados</h1>
           <p>Publique avisos e mensagens para seus alunos</p>
         </div>
-        <button class="btn-primary" style="margin-bottom:20px">+ Novo Comunicado</button>
+      
+        <button class="btn-primary" style="margin-bottom:20px">
+          + Novo Comunicado
+        </button>
+      
         <div class="com-list-box">
           <div class="stitle">Comunicados Publicados</div>
-          <div class="com-item" *ngFor="let c of comunicados; let i = index">
+      
+          <div class="com-item" *ngFor="let c of comunicados">
             <div class="com-body">
-              <div class="com-title">{{ c.titulo }}</div>
-              <div class="com-meta">{{ c.data }} • {{ c.turma }}</div>
-              <div class="com-text">{{ c.texto }}</div>
-              <span class="tag" [ngClass]="c.tag">{{ c.tag }}</span>
+      
+              <div class="com-title">
+                {{ c.titulo }}
+              </div>
+      
+              <div class="com-meta">
+                {{ c.data_publicacao | date:'dd/MM/yyyy' }} • {{ c.turma }}
+              </div>
+      
+              <div class="com-text">
+                {{ c.mensagem }}
+              </div>
+      
+              <span class="tag" [ngClass]="c.tipo">
+                {{ c.tipo }}
+              </span>
+      
             </div>
-            <div class="com-acts"><button class="ibtn-svg">✏️</button><button class="ibtn-svg del"
-                (click)="removerComunicado(i)">🗑️</button></div>
+      
+            <div class="com-acts">
+              <button class="ibtn-svg">✏️</button>
+      
+              <button
+                class="ibtn-svg del"
+                (click)="removerComunicado(c.id!)">
+                🗑️
+              </button>
+            </div>
           </div>
+      
+          <div *ngIf="comunicados.length === 0">
+            Nenhum comunicado encontrado.
+          </div>
+      
         </div>
       </div>
 
